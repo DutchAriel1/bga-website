@@ -482,7 +482,7 @@ function IGNSports({ onNavigate }) {
               </p>
             </div>
             <button
-              onClick={() => onNavigate && onNavigate("tickets")}
+              onClick={() => window.open("https://docs.google.com/forms/d/1cBEoNT8eIXAJHDZGPYNDTw7rAmkdUBZnpHqL1rKzUsQ/viewform", "_blank", "noopener")}
               style={{
                 background: IGN.pink, color: IGN.white, border: `3px solid ${IGN.navy}`,
                 borderRadius: 999, padding: "14px 24px", cursor: "pointer",

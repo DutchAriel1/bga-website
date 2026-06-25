@@ -306,7 +306,7 @@ function PillarRow({ chip, title, body, cta, photo, nav, onNavigate, flip, numbe
             </div>
             <div className="chip chip-chocolate">{chip}</div>
           </div>
-          <h3 className="display d-md" style={{ margin: 0 }}>{title}</h3>
+          <h3 className="display d-md" style={{ margin: 0, fontWeight: 700 }}>{title}</h3>
           <p style={{ fontSize: 17, lineHeight: 1.65, marginTop: 20, maxWidth: 480, opacity: 0.82 }}>{body}</p>
         </div>
         <button className="btn btn-ghost" onClick={() => onNavigate(nav)} style={{ alignSelf: "flex-start", marginTop: 32, paddingLeft: 0 }}>

@@ -108,19 +108,22 @@ function ProgrammingPage({ onNavigate }) {
 
       <section className="section">
         <div className="container-wide">
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 56, borderBottom: "1px solid var(--line-dark)", paddingBottom: 8 }}>
-            {programs.map((t) =>
+          <div style={{ display: "flex", gap: 2, flexWrap: "nowrap", overflowX: "auto", marginBottom: 56, borderBottom: "1px solid var(--line-dark)", paddingBottom: 8 }}>
+            {programs.map((t, i) =>
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
               style={{
-                padding: "14px 22px",
+                padding: "10px 14px",
                 border: "none",
+                borderLeft: i === 0 ? "none" : "1px solid var(--line-dark)",
                 background: "transparent",
                 cursor: "pointer",
                 fontFamily: "inherit",
-                fontSize: 15,
-                fontWeight: activeTab === t.id ? 600 : 500,
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                fontSize: "clamp(11px, 1.15vw, 15px)",
+                fontWeight: activeTab === t.id ? 800 : 700,
                 color: activeTab === t.id ? "var(--chocolate)" : "rgba(61,44,41,0.55)",
                 borderBottom: activeTab === t.id ? "2px solid var(--lavender)" : "2px solid transparent",
                 marginBottom: -9,
