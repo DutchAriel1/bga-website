@@ -34,6 +34,8 @@ export function at(tableName) {
 }
 
 export async function createRecord(tableName, fields) {
-  const records = await at(tableName).create([{ fields }]);
+  // typecast:true lets Airtable auto-convert string values to match column
+  // types (numbers, dates, select options) so forms don't break on a mismatch.
+  const records = await at(tableName).create([{ fields }], { typecast: true });
   return records[0];
 }
