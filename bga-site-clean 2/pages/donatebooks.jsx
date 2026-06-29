@@ -295,6 +295,7 @@ function BGHPDonate() {
               <p style={{ margin: "12px 0 0", fontSize: 15, lineHeight: 1.6, fontWeight: 600 }}>
                 The Black Girl Advocate<br />
                 Attn: Hair Project Library<br />
+                send an email for a valid mailing address to president@theblackgirladvocate.org<br />
                 Denver, CO
               </p>
             </div>
@@ -503,7 +504,7 @@ function BGHPHire() {
 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 14 }}>
                   <div>
-                    <BLabel># of girls</BLabel>
+                    <BLabel># of students</BLabel>
                     <input value={form.count} onChange={set("count")} placeholder="e.g. 25" style={bghpField} />
                   </div>
                   <div>
