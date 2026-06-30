@@ -64,13 +64,15 @@ function HeroSection({ onNavigate }) {
 
             </p>
             <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button className="btn btn-primary" onClick={() => {
+              <button className="btn btn-primary" onClick={() => onNavigate("programming")}>
+                Check out our Programs <Icon.Arrow size={16} />
+              </button>
+              <button className="btn btn-outline-light" onClick={() => {
                 const el = document.getElementById("fund-the-year");
                 if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: "smooth" });
               }}>
                 Donate Today <Icon.Heart size={16} />
               </button>
-
             </div>
           </div>
         </div>
