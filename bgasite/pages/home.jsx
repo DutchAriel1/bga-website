@@ -452,7 +452,7 @@ function DonorSection({ onNavigate }) {
             </div>
           </div>
 
-          <div id="donate-widget" style={{ position: "relative", background: "var(--beige)", borderRadius: 20, padding: 12, overflow: "hidden", minHeight: 560 }}>
+          <div id="donate-widget" style={{ position: "relative", background: "var(--beige)", borderRadius: 20, padding: 12, overflow: "visible", minHeight: 560 }}>
             <div
               dangerouslySetInnerHTML={{
                 __html: '<dbox-widget campaign="blackgirlunityspacedonations" type="donation_form" enable-auto-scroll="true"></dbox-widget>'
