@@ -266,7 +266,7 @@ function IGNHero({ onNavigate }) {
    ==================================================================== */
 function IGNTicker() {
   const words = [
-  "BLACK GIRLS. BIG DREAMS. BOLD MOVES.",
+  "BRILLIANT GIRLS. BIG DREAMS. BOLD MOVES.",
   "GAME READY. LIFE READY.",
   "YOU GOT NEXT.",
   "CONFIDENT. STRONG. UNSTOPPABLE.",
@@ -330,7 +330,7 @@ function IGNSports({ onNavigate }) {
       <div className="container-wide">
         <SectionHeader
           eyebrow="Self-Defense Series + Sports Bra Drive"
-          title="Built to Protect Herself."
+          title="Join Our Weekly Self Defense Classes"
           accent={IGN.pink}
           subtitle="An 8-week Sunday series led by a Team USA Olympic wrestler. Entry is one new sports bra, your donation is your ticket in." />
 
@@ -354,7 +354,7 @@ function IGNSports({ onNavigate }) {
           }} />
 
           {/* Coach badge */}
-          <div style={{
+          <div className="ign-coach-badge" style={{
             position: "absolute", top: "clamp(24px,3vw,44px)", right: "clamp(24px,3vw,44px)",
             display: "flex", alignItems: "center", gap: 16, zIndex: 3
           }}>
@@ -601,17 +601,6 @@ function IGNComponents() {
             position: "relative",
             minHeight: 200
           }}>
-              <div style={{
-              width: 56, height: 56,
-              background: it.color,
-              color: IGN.white,
-              border: `2.5px solid ${IGN.navy}`,
-              borderRadius: 14,
-              display: "grid", placeItems: "center",
-              marginBottom: 18
-            }}>
-                <ComponentGlyph kind={it.glyph} />
-              </div>
               <h3 className="ign-h" style={{
               margin: 0, fontSize: 24, color: IGN.navy
             }}>{it.t}</h3>
@@ -824,7 +813,7 @@ function IGNResources({ onNavigate }) {
     summary: "The top tier of collegiate athletics. Full and partial athletic scholarships, the largest budgets, and the toughest recruiting timeline. Eligibility Center registration required.",
     links: [
     { t: "D1 Initial Eligibility", u: "https://www.ncaa.org/sports/2014/10/8/initial-eligibility-academic-requirements.aspx" },
-    { t: "D1 Recruiting Calendar", u: "https://www.ncaa.org/sports/2016/4/27/recruiting-calendars.aspx" }]
+    { t: "D1 Recruiting Calendar", u: "https://www.ncaa.org/sports/2018/5/8/division-i-and-ii-recruiting-calendars.aspx" }]
 
   },
   {
@@ -834,7 +823,7 @@ function IGNResources({ onNavigate }) {
     summary: "Competitive athletics with more flexibility, partial scholarships are common and athletes balance sport with a broader campus life. Eligibility Center registration required.",
     links: [
     { t: "D2 Initial Eligibility", u: "https://www.ncaa.org/sports/2014/10/8/initial-eligibility-academic-requirements.aspx" },
-    { t: "D2 Recruiting Calendar", u: "https://www.ncaa.org/sports/2016/4/27/recruiting-calendars.aspx" }]
+    { t: "D2 Recruiting Calendar", u: "https://www.ncaa.org/sports/2018/5/8/division-i-and-ii-recruiting-calendars.aspx" }]
 
   },
   {
@@ -958,9 +947,6 @@ function IGNResources({ onNavigate }) {
             <p style={{ margin: 0, color: IGN.navy, opacity: 0.78, fontSize: 15, lineHeight: 1.6, fontWeight: 500 }}>
               Don't see yours here? Our college pathway team meets with every family one-on-one as early as 9th grade.
             </p>
-            <button className="ign-btn ign-btn-pink" style={{ marginTop: 22 }} onClick={() => onNavigate("contact?intent=enroll")}>
-              Book a Pathway Call →
-            </button>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {faqs.map((f, i) => <FaqItem key={i} {...f} />)}
@@ -986,7 +972,7 @@ function IGNResources({ onNavigate }) {
             {[
             { t: "NCAA Eligibility Center", u: "https://web3.ncaa.org/ecwr3/", c: IGN.pink },
             { t: "Initial Eligibility Requirements", u: "https://www.ncaa.org/sports/2014/10/8/initial-eligibility-academic-requirements.aspx", c: IGN.gold },
-            { t: "NCAA Recruiting Calendar", u: "https://www.ncaa.org/sports/2016/4/27/recruiting-calendars.aspx", c: IGN.green },
+            { t: "NCAA Recruiting Calendar", u: "https://www.ncaa.org/sports/2018/5/8/division-i-and-ii-recruiting-calendars.aspx", c: IGN.green },
             { t: "Find NCAA Schools", u: "https://www.ncaa.com/schools", c: IGN.pink },
             { t: "FAFSA", u: "https://studentaid.gov/h/apply-for-aid/fafsa", c: IGN.gold },
             { t: "CSS Profile", u: "https://cssprofile.collegeboard.org/", c: IGN.green }].
