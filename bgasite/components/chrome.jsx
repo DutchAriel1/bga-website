@@ -18,10 +18,37 @@ function Logo({ dark = false, onClick }) {
 }
 
 function Nav({ current, onNavigate, dark = false }) {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [openGroup, setOpenGroup] = React.useState(null);
+
+  // Grouped mobile navigation: dropdown folders + direct links
+  const mobileNav = [
+    { label: "About", children: [
+      { id: "about", label: "About Us" },
+      { id: "ourwork", label: "Our Work" },
+      { id: "impact", label: "Impact" }] },
+    { label: "Programs", children: [
+      { id: "programming", label: "All Programs" },
+      { id: "igotnext", label: "I Got Next" },
+      { id: "eliteeight", label: "The Elite Eight" },
+      { id: "ladiesfirst", label: "Ladies First" },
+      { id: "hbcuinterest", label: "HBCU Tour" },
+      { id: "educationhub", label: "Black Women in Education" }] },
+    { id: "shop", label: "Shop" },
+    { id: "contact", label: "Contact" }];
+
+  // Lock body scroll while the mobile menu is open
+  React.useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const go = (id) => { setMenuOpen(false); setOpenGroup(null); onNavigate(id); };
+
   return (
     <header className={"nav-root" + (dark ? " nav-dark" : "")}>
       <div className="container-wide nav-inner">
-        <Logo dark={dark} onClick={() => onNavigate("home")} />
+        <Logo dark={dark} onClick={() => go("home")} />
         <nav className="nav-links">
           {BGA.pages.slice(1).map((p) =>
           <div
@@ -33,6 +60,66 @@ function Nav({ current, onNavigate, dark = false }) {
             </div>
           )}
           <button className="btn btn-primary nav-cta" onClick={() => goDonate(onNavigate)}>
+            Donate <Icon.Heart size={16} />
+          </button>
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="nav-burger"
+          aria-label="Open menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(true)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      {/* Mobile menu drawer */}
+      <div className={"nav-mobile" + (menuOpen ? " open" : "")}>
+        <div className="nav-mobile-head container-wide">
+          <Logo onClick={() => go("home")} />
+          <button className="nav-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M6 6 L18 18 M18 6 L6 18" />
+            </svg>
+          </button>
+        </div>
+        <nav className="nav-mobile-links">
+          {mobileNav.map((item) =>
+          item.children ?
+          <div key={item.label} className="nav-mobile-group">
+            <button
+              className={"nav-mobile-grouptoggle" + (openGroup === item.label ? " open" : "")}
+              aria-expanded={openGroup === item.label}
+              onClick={() => setOpenGroup(openGroup === item.label ? null : item.label)}>
+              {item.label}
+              <svg className="nav-mobile-chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            {openGroup === item.label &&
+            <div className="nav-mobile-sub">
+              {item.children.map((c) =>
+              <div
+                key={c.id}
+                className={"nav-mobile-sublink" + (current === c.id ? " active" : "")}
+                onClick={() => go(c.id)}>
+                {c.label}
+              </div>
+              )}
+            </div>
+            }
+          </div> :
+          <div
+            key={item.id}
+            className={"nav-mobile-link" + (current === item.id ? " active" : "")}
+            onClick={() => go(item.id)}>
+            {item.label}
+          </div>
+          )}
+          <button className="btn btn-primary" style={{ marginTop: 18, justifyContent: "center" }} onClick={() => { setMenuOpen(false); goDonate(onNavigate); }}>
             Donate <Icon.Heart size={16} />
           </button>
         </nav>
