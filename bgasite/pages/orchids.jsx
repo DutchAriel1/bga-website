@@ -256,6 +256,9 @@ function OrchidNominateForm({ onDone }) {
         </div>
         <OrcField label="Why she deserves an Orchid">
           <textarea className="orc-input" rows="5" value={reason} onChange={(e) => setReason(e.target.value)} style={{ ...orcInput, resize: "vertical" }} placeholder="Tell us how she shows up for Black girls and her community. The more specific, the better." />
+          <div className="orc-body" style={{ marginTop: 6, fontSize: 12.5, color: reason.trim().length >= 40 ? ORC.orchid : ORC.ink, opacity: 0.7 }}>
+            {reason.trim().length >= 40 ? "Looks great." : `Please write at least 40 characters (${reason.trim().length}/40).`}
+          </div>
         </OrcField>
       </div>
 
@@ -273,6 +276,17 @@ function OrchidNominateForm({ onDone }) {
       <button type="submit" className="orc-btn orc-btn-orchid" disabled={!canSubmit} style={{ marginTop: 30, opacity: canSubmit ? 1 : 0.5, cursor: canSubmit ? "pointer" : "not-allowed" }}>
         {submitting ? "Submitting..." : "Submit Nomination"}
       </button>
+      {!canSubmit && !submitting &&
+      <div className="orc-body" style={{ marginTop: 14, fontSize: 13.5, color: ORC.ink, opacity: 0.72 }}>
+        To submit, please complete: {[
+        !nomineeName && "nominee name",
+        !institution && "school / institution",
+        reason.trim().length < 40 && "a reason of at least 40 characters",
+        !nominatorName && "your name",
+        !emailOk(nominatorEmail) && "a valid email"].
+        filter(Boolean).join(", ")}.
+      </div>
+      }
     </form>
   );
 }
