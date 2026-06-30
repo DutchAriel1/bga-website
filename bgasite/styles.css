@@ -361,6 +361,11 @@ html { scroll-behavior: smooth; }
 html, body { overflow-x: hidden; }
 img, video { max-width: 100%; }
 
+/* Donorbox donation widget: keep it fully responsive on every screen */
+#donate-widget, #donate-widget iframe, #donate-widget dbox-widget {
+  width: 100% !important; max-width: 100% !important;
+}
+
 @media (max-width: 900px) {
   /* Tighter page gutters */
   .container, .container-wide { padding-left: 20px !important; padding-right: 20px !important; }
@@ -403,6 +408,13 @@ img, video { max-width: 100%; }
   [style*="padding: 40px"], [style*="padding:40px"] { padding: 26px 22px !important; }
   /* Decorative oversized background letters shouldn't crowd small screens */
   [style*="30vw"], [style*="32vw"] { font-size: 44vw !important; opacity: 0.05 !important; }
+
+  /* I Got Next self-defense flyer: drop the floating coach badge into normal
+     flow on phones so it no longer overlaps the big headline */
+  .ign-coach-badge {
+    position: static !important; top: auto !important; right: auto !important;
+    margin-bottom: 22px; justify-content: flex-start;
+  }
 
   /* Footer stacks fully */
   footer { padding-top: 64px !important; padding-bottom: 28px !important; }
