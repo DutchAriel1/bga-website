@@ -380,6 +380,30 @@ img, video { max-width: 100%; }
     grid-template-columns: 1fr !important;
   }
 
+  /* Phase 2: larger reading + bigger tap targets for multigenerational users */
+  body { font-size: 17px; }
+  p[style*="font-size: 13"], p[style*="font-size: 14"], p[style*="font-size: 15"],
+  li[style*="font-size: 13"], li[style*="font-size: 14"], li[style*="font-size: 15"] {
+    font-size: 16.5px !important; line-height: 1.6 !important;
+  }
+  .btn {
+    min-height: 52px !important;
+    font-size: 16px !important;
+    padding: 15px 24px !important;
+  }
+  .btn-primary, .btn-dark, .btn-outline-dark, .btn-outline-light {
+    width: 100%; justify-content: center;
+  }
+
+  /* Phase 3: interior-page polish on phones */
+  /* Calmer page-top heroes (PageHero uses 96px/120px) */
+  [style*="96px 0 120px"] { padding-top: 52px !important; padding-bottom: 60px !important; }
+  /* Trim heavy inner card padding so content isn't cramped */
+  [style*="48px 56px"], [style*="48px 48px"] { padding: 28px 22px !important; }
+  [style*="padding: 40px"], [style*="padding:40px"] { padding: 26px 22px !important; }
+  /* Decorative oversized background letters shouldn't crowd small screens */
+  [style*="30vw"], [style*="32vw"] { font-size: 44vw !important; opacity: 0.05 !important; }
+
   /* Footer stacks fully */
   footer { padding-top: 64px !important; padding-bottom: 28px !important; }
   footer .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
