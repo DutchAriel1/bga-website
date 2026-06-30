@@ -1,6 +1,4 @@
 function ProgrammingPage({ onNavigate }) {
-  const [activeTab, setActiveTab] = React.useState("eliteeight");
-
   const programs = [
   {
     id: "eliteeight",
@@ -96,8 +94,6 @@ function ProgrammingPage({ onNavigate }) {
   }];
 
 
-  const c = programs.find((p) => p.id === activeTab) || programs[0];
-
   return (
     <>
       <PageHero
@@ -108,119 +104,74 @@ function ProgrammingPage({ onNavigate }) {
 
       <section className="section">
         <div className="container-wide">
-          <div style={{ display: "flex", gap: 2, flexWrap: "nowrap", overflowX: "auto", marginBottom: 56, borderBottom: "1px solid var(--line-dark)", paddingBottom: 8 }}>
-            {programs.map((t, i) =>
-            <button
-              key={t.id}
-              onClick={() => setActiveTab(t.id)}
-              style={{
-                padding: "10px 14px",
-                border: "none",
-                borderLeft: i === 0 ? "none" : "1px solid var(--line-dark)",
-                background: "transparent",
-                cursor: "pointer",
-                fontFamily: "inherit",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-                fontSize: "clamp(11px, 1.15vw, 15px)",
-                fontWeight: activeTab === t.id ? 800 : 700,
-                color: activeTab === t.id ? "var(--chocolate)" : "rgba(61,44,41,0.55)",
-                borderBottom: activeTab === t.id ? "2px solid var(--lavender)" : "2px solid transparent",
-                marginBottom: -9,
-                transition: "color 0.15s"
-              }}>
-              
-                {t.label}
-              </button>
-            )}
-          </div>
-
-          <div key={activeTab} style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 64, alignItems: "center", animation: "fadeIn 0.4s ease" }}>
-            <div>
-              <div className="chip chip-bronze" style={{ marginBottom: 20, background: "var(--lavender)", color: "var(--beige)" }}>{c.tag}</div>
-              <h2 className="display d-xl" style={{ margin: 0 }}>{c.title}</h2>
-              <p style={{ fontSize: 19, lineHeight: 1.6, marginTop: 28, opacity: 0.82, fontWeight: 400 }}>{c.body}</p>
-              <ul style={{ listStyle: "none", padding: 0, marginTop: 36, display: "flex", flexDirection: "column", gap: 12 }}>
-                {c.points.map((p, i) =>
-                <li key={i} style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 15.5 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 72 }}>
+            {programs.map((c, idx) =>
+            <div key={c.id} style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, alignItems: "center", paddingBottom: idx === programs.length - 1 ? 0 : 72, borderBottom: idx === programs.length - 1 ? "none" : "1px solid var(--line-dark)" }}>
+              <div>
+                <div className="chip chip-bronze" style={{ marginBottom: 20, background: "var(--lavender)", color: "var(--beige)" }}>{c.tag}</div>
+                <h2 className="display d-md" style={{ margin: 0 }}>{c.title}</h2>
+                <p style={{ fontSize: 18, lineHeight: 1.6, marginTop: 24, opacity: 0.82, fontWeight: 400 }}>{c.body}</p>
+                <ul style={{ listStyle: "none", padding: 0, marginTop: 28, display: "flex", flexDirection: "column", gap: 12 }}>
+                  {c.points.map((pt, i) =>
+                  <li key={i} style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 15.5 }}>
                     <span style={{ width: 24, height: 24, borderRadius: "50%", background: "var(--lavender)", color: "var(--beige)", display: "grid", placeItems: "center", flexShrink: 0 }}>
                       <Icon.Check size={14} />
                     </span>
-                    {p}
+                    {pt}
                   </li>
-                )}
-              </ul>
-              {c.expect &&
-              <div style={{ marginTop: 36, background: "var(--beige-deep)", borderRadius: 16, padding: "24px 26px", border: "1px solid var(--line-dark)" }}>
+                  )}
+                </ul>
+                {c.expect &&
+                <div style={{ marginTop: 32, background: "var(--beige-deep)", borderRadius: 16, padding: "24px 26px", border: "1px solid var(--line-dark)" }}>
                   <div className="eyebrow" style={{ color: "var(--lavender)", marginBottom: 14, fontSize: 11 }}>What to expect</div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 28px" }}>
                     {[
-                  { l: "Cost", v: c.expect.cost },
-                  { l: "Schedule", v: c.expect.schedule },
-                  { l: "How to apply", v: c.expect.apply },
-                  { l: "Where & how", v: c.expect.transport }].
-                  map((row, i) =>
-                  <div key={i}>
-                        <div style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.6, fontWeight: 600, marginBottom: 4 }}>{row.l}</div>
-                        <div style={{ fontSize: 14.5, lineHeight: 1.45, color: "var(--chocolate-2)" }}>{row.v}</div>
-                      </div>
-                  )}
+                    { l: "Cost", v: c.expect.cost },
+                    { l: "Schedule", v: c.expect.schedule },
+                    { l: "How to apply", v: c.expect.apply },
+                    { l: "Where & how", v: c.expect.transport }].
+                    map((row, i) =>
+                    <div key={i}>
+                      <div style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.6, fontWeight: 600, marginBottom: 4 }}>{row.l}</div>
+                      <div style={{ fontSize: 14.5, lineHeight: 1.45, color: "var(--chocolate-2)" }}>{row.v}</div>
+                    </div>
+                    )}
                   </div>
                 </div>
-              }
-              <div style={{ marginTop: 40, display: "flex", gap: 12, flexWrap: "wrap" }}>
-                {c.id !== "education" && c.id !== "hair" &&
-                <button className="btn btn-dark" onClick={() => onNavigate(c.primaryRoute || (c.id === "senior" ? "scholarships" : c.id === "hbcu" ? "hbcuinterest" : "apply"))}>{c.primaryCta || "Enroll a Student"} <Icon.Arrow size={16} /></button>
                 }
-                {c.secondaryCta &&
-                <button className="btn btn-primary" onClick={() => onNavigate(c.secondaryRoute || "contact")}>{c.secondaryCta} <Icon.Arrow size={16} /></button>
-                }
-                {c.id !== "hbcu" && c.id !== "education" &&
-                <button className="btn" onClick={() => onNavigate(c.id === "arts" ? "tickets" : c.id === "eliteeight" ? "eliteeight" : "comingsoon")} style={{ background: "var(--lavender)", color: "var(--beige)" }}>
-                  <Icon.Calendar size={16} /> {c.id === "eliteeight" ? "The Tour Hub" : "Upcoming Events"}
-                </button>
-                }
+                <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  {c.id !== "education" && c.id !== "hair" &&
+                  <button className="btn btn-dark" onClick={() => onNavigate(c.primaryRoute || (c.id === "senior" ? "scholarships" : c.id === "hbcu" ? "hbcuinterest" : "apply"))}>{c.primaryCta || "Enroll a Student"} <Icon.Arrow size={16} /></button>
+                  }
+                  {c.secondaryCta &&
+                  <button className="btn btn-primary" onClick={() => onNavigate(c.secondaryRoute || "contact")}>{c.secondaryCta} <Icon.Arrow size={16} /></button>
+                  }
+                  {c.id !== "hbcu" && c.id !== "education" &&
+                  <button className="btn" onClick={() => onNavigate(c.id === "arts" ? "tickets" : c.id === "eliteeight" ? "eliteeight" : "comingsoon")} style={{ background: "var(--lavender)", color: "var(--beige)" }}>
+                    <Icon.Calendar size={16} /> {c.id === "eliteeight" ? "The Tour Hub" : "Upcoming Events"}
+                  </button>
+                  }
+                </div>
               </div>
-            </div>
-            {c.photo ?
-            <div>
-                <div style={{
-                borderRadius: 20,
-                aspectRatio: "4/3",
-                backgroundImage: `url(${c.photo})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundColor: "var(--beige-deep)"
-              }} />
-                {c.photoExtra &&
-              <div style={{
-                marginTop: 14,
-                borderRadius: 14,
-                aspectRatio: "16/9",
-                backgroundImage: `url(${c.photoExtra})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundColor: "var(--beige-deep)"
-              }} />
-              }
+              {c.photo ?
+              <div>
+                <div style={{ borderRadius: 20, aspectRatio: "4/3", backgroundImage: `url(${c.photo})`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "var(--beige-deep)" }} />
                 {c.photoCaption &&
-              <div style={{ marginTop: 14, fontFamily: "Noto Serif", fontStyle: "italic", fontSize: 14, color: "var(--taupe)" }}>
-                    {c.photoCaption}
-                  </div>
-              }
+                <div style={{ marginTop: 14, fontFamily: "Noto Serif", fontStyle: "italic", fontSize: 14, color: "var(--taupe)" }}>{c.photoCaption}</div>
+                }
               </div> :
-            c.ivyMark ?
-            <IvyTypographicMark /> :
-
-            <div className={`img-ph ${c.ph}`} style={{ borderRadius: 20, aspectRatio: "4/5" }} />
-            }
+              c.ivyMark ?
+              <IvyTypographicMark /> :
+              <div className={`img-ph ${c.ph}`} style={{ borderRadius: 20, aspectRatio: "4/5" }} />
+              }
+            </div>
+            )}
           </div>
-          <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
         </div>
       </section>
 
-      {/* 2026 Inaugural Orchid Awards, only shown for Black Women in Education */}
-      {activeTab === "education" && <OrchidAwardsSection onNavigate={onNavigate} />}
+      {/* 2026 Inaugural Orchid Awards (tied to Black Women in Education) */}
+      <OrchidAwardsSection onNavigate={onNavigate} />
 
       {/* A girl's BGA journey */}
       <section className="section" style={{ background: "var(--lavender-soft)", color: "var(--chocolate-2)", position: "relative", overflow: "hidden" }}>
