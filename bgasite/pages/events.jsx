@@ -21,7 +21,7 @@ const BGA_EVENTS = [
   rsvp: false,
   registerUrl: "https://forms.gle/p3yVBY5vDDMKwrvZ8",
   bra: true,
-  flyer: "assets/events/site-flyers/self-defense-sunday.png",
+  flyer: "assets/events/site-flyers/self-defense-sunday.jpg",
   blurb: "Every Sunday our girls train with an Olympian. One hour of real self-defense technique, taught by USA Olympian Maya Nelson, followed by our sports bra drive. Entry is one new sports bra, because a girl cannot train in gear that does not fit her, and no girl should have to choose between comfort and showing up.",
   details: [
   "Free every week. No experience, no membership, and no cost to families.",
@@ -42,7 +42,7 @@ const BGA_EVENTS = [
   city: "Centennial, CO",
   audience: "9th grade girls",
   rsvp: true,
-  flyer: "assets/events/site-flyers/topgolf-9th-graders.png",
+  flyer: "assets/events/site-flyers/topgolf-9th-graders.jpg",
   blurb: "Our 9th grade class steps onto the tee. A relaxed afternoon of golf, food, and sisterhood built to open a sport most of our girls have never been invited into, and to introduce the freshman cohort to each other before the school year starts.",
   details: [
   "Closed toe shoes are required to play. No sandals, no slides.",
@@ -64,7 +64,7 @@ const BGA_EVENTS = [
   audience: "Black educators",
   rsvp: false,
   soldOut: true,
-  flyer: "assets/events/site-flyers/black-educator-wellness-day.png",
+  flyer: "assets/events/site-flyers/black-educator-wellness-day.jpg",
   blurb: "A restorative day in the mountains for thirty Black educators at Lincoln Hills, one of the only historically Black mountain resorts in the country. Horseback riding, yoga, sound bowls, archery, and a Black history hike. Built for the women who pour into our daughters all year and rarely get poured into.",
   details: [
   "Limited to thirty Black educators. This one filled before the public announcement.",
@@ -245,6 +245,91 @@ function EvMonth({ year, month, events, onPick }) {
 
 }
 
+/* ---------------- phone agenda, replaces the month grid under 900px ----------------
+   A 7 column grid puts 46px cells on a phone, which is unreadable and untappable.
+   Same data, stacked as a date list you can actually read and tap. */
+
+function EvAgenda({ year, month, events, onPick }) {
+  const days = new Date(year, month + 1, 0).getDate();
+  const dow = (d) => new Date(year, month, d).toLocaleDateString("en-US", { weekday: "short" }).toUpperCase();
+  const rows = [];
+  events.forEach((e) => {
+    if (!e.recurs) return;
+    const dates = [];
+    for (let d = 1; d <= days; d++) if (new Date(year, month, d).getDay() === e.recurs.day) dates.push(d);
+    if (dates.length) rows.push({ ev: e, repeat: true, dates, sort: dates[0] });
+  });
+  events.forEach((e) => {
+    if (!e.recurs && e.date[0] === year && e.date[1] === month) rows.push({ ev: e, repeat: false, dates: [e.date[2]], sort: e.date[2] });
+  });
+  rows.sort((a, b) => a.sort - b.sort);
+  const count = rows.reduce((n, r) => n + r.dates.length, 0);
+  const mon = MONTHS[month].slice(0, 3).toUpperCase();
+
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, paddingBottom: 12, borderBottom: `1px solid ${EV.beigeWarm}`, marginBottom: 14 }}>
+        <h3 className="serif" style={{ margin: 0, fontSize: 24, fontWeight: 600, color: EV.chocolate }}>{MONTHS[month]} {year}</h3>
+        <span style={{ fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700, color: EV.bronze, whiteSpace: "nowrap" }}>
+          {count} {count === 1 ? "date" : "dates"}
+        </span>
+      </div>
+      {!rows.length &&
+      <p style={{ margin: 0, fontSize: 16, color: EV.taupe, lineHeight: 1.6 }}>Nothing on the calendar this month yet.</p>}
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {rows.map((r, i) => {
+          const e = r.ev;
+          const when = r.repeat ?
+          `${e.recurs.label}, ${e.time}${e.endTime ? ` to ${e.endTime}` : ""}` :
+          `${dow(r.dates[0]).charAt(0)}${dow(r.dates[0]).slice(1).toLowerCase()} ${mon.charAt(0)}${mon.slice(1).toLowerCase()} ${r.dates[0]}, ${e.time}${e.endTime ? ` to ${e.endTime}` : ""}`;
+          return (
+            <button
+              key={i}
+              onClick={() => onPick(e.id)}
+              style={{
+                width: "100%", display: "flex", alignItems: "stretch", textAlign: "left",
+                background: "#FFFFFF", border: `1px solid ${EV.beigeWarm}`, borderRadius: 16,
+                padding: 0, overflow: "hidden", cursor: "pointer", fontFamily: "inherit",
+                color: EV.chocolate, minHeight: 96
+              }}>
+              <div style={{
+                flex: "0 0 78px", background: e.soldOut ? EV.taupe : EV.bronze, color: "#FFFFFF",
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 1, padding: "12px 6px"
+              }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", opacity: 0.85 }}>{r.repeat ? "EVERY" : dow(r.dates[0])}</span>
+                <span className="serif" style={{ fontSize: r.repeat ? 24 : 32, fontWeight: 600, lineHeight: 1.05 }}>
+                  {r.repeat ? dow(r.dates[0]).charAt(0) + dow(r.dates[0]).slice(1).toLowerCase() : r.dates[0]}
+                </span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", opacity: 0.85 }}>{r.repeat ? `${r.dates.length} in ${mon}` : mon}</span>
+              </div>
+              <div style={{ flex: 1, minWidth: 0, padding: "14px 16px", display: "flex", flexDirection: "column", gap: 5 }}>
+                <div className="serif" style={{ fontSize: 19, fontWeight: 600, lineHeight: 1.2 }}>{e.title}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.5, color: EV.taupe }}>{when}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.5, color: EV.taupe }}>{e.location}, {e.city}</div>
+                {e.flyer &&
+                <img
+                  src={e.flyer}
+                  alt={`${e.title} flyer`}
+                  loading="lazy"
+                  style={{ width: "100%", height: "auto", display: "block", borderRadius: 10, marginTop: 8, border: `1px solid ${EV.beigeWarm}` }} />}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 3 }}>
+                  {e.soldOut &&
+                  <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", background: EV.beigeWarm, color: EV.taupe, padding: "5px 10px", borderRadius: 99 }}>Full</span>}
+                  {!e.soldOut && e.rsvp &&
+                  <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", background: "rgba(173,138,86,0.16)", color: EV.bronze, padding: "5px 10px", borderRadius: 99 }}>RSVP</span>}
+                  {!e.soldOut && !e.rsvp && e.registerUrl &&
+                  <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", background: "rgba(156,138,165,0.2)", color: "#6F5E7A", padding: "5px 10px", borderRadius: 99 }}>Sign up</span>}
+                  <span style={{ fontSize: 14, fontWeight: 600, color: EV.bronze, marginLeft: "auto" }}>Details &rarr;</span>
+                </div>
+              </div>
+            </button>);
+
+        })}
+      </div>
+    </div>);
+
+}
+
 /* ---------------- event card ---------------- */
 
 function EvCard({ ev, onRsvp, onBra }) {
@@ -328,7 +413,7 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
     studentFirst: "", studentLast: "", grade: "9th", school: "", studentEmail: "", studentPhone: "", dob: "",
     parentName: "", parentRelationship: "Mother", parentEmail: "", parentPhone: "", preferredContact: "Text",
     emergencyName: "", emergencyPhone: "",
-    zip: "", race: [], lunch: "Prefer not to say", firstGen: "Not sure", household: "Prefer not to say", firstProgram: "Yes",
+    zip: "", race: [], firstProgram: "Yes",
     bBelong: 0, bCollege: 0, bStress: 0, bActive: 0, bLead: 0, baselineSkip: false,
     media: false, dataUse: false, pickup: false
   });
@@ -456,38 +541,9 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
         </div>
       </div>
 
-      {/* 3. Funder demographics */}
-      <div style={{ ...card, background: EV.beigeDeep }}>
-        {sectionHead(3, "Who we serve", "Four quick fields. Place based funders like Rose Community Foundation, the Colorado Trust, the Women's Foundation of Colorado, and the Denver Foundation require us to show exactly which girls and which neighborhoods our dollars reach. Every field is optional except zip code, and answers are reported only as group totals, never with your student's name.")}
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="ev-grid2">
-          <EvField label="Home zip code" required hint="This is the single most requested data point in Colorado youth grants.">
-            <input required style={evField} value={f.zip} onChange={(e) => set("zip")(e.target.value)} placeholder="80207" inputMode="numeric" maxLength={5} />
-          </EvField>
-          <EvField label="Free or reduced lunch eligible" hint="Stands in for household income so we never have to ask for a dollar figure.">
-            <select style={evField} value={f.lunch} onChange={(e) => set("lunch")(e.target.value)}>
-              {["Prefer not to say", "Yes", "No", "Not sure"].map((o) => <option key={o} value={o}>{o}</option>)}
-            </select>
-          </EvField>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 20 }} className="ev-grid2">
-          <EvField label="Would she be the first in her family to finish college?" hint="First generation status unlocks college access funding.">
-            <select style={evField} value={f.firstGen} onChange={(e) => set("firstGen")(e.target.value)}>
-              {["Not sure", "Yes, she would be the first", "No, a parent finished college", "Prefer not to say"].map((o) => <option key={o} value={o}>{o}</option>)}
-            </select>
-          </EvField>
-          <EvField label="Who she lives with">
-            <select style={evField} value={f.household} onChange={(e) => set("household")(e.target.value)}>
-              {["Prefer not to say", "Both parents", "One parent", "Grandparent or other relative", "Legal guardian or foster family", "Other"].map((o) => <option key={o} value={o}>{o}</option>)}
-            </select>
-          </EvField>
-        </div>
-      </div>
-
-      {/* 4. Baseline pre-survey */}
+      {/* 3. Baseline pre-survey */}
       <div style={card}>
-        {sectionHead(4, "Where she is today", "Five statements, thirty seconds. We ask these again at the end of the season and report the change. That before and after number is the difference between a grant application that says we served fifty girls and one that says we moved belonging by thirty percent. There is no wrong answer and nobody sees her individual responses.")}
+        {sectionHead(3, "Where she is today", "Five statements, thirty seconds. We ask these again at the end of the season and report the change. That before and after number is the difference between a grant application that says we served fifty girls and one that says we moved belonging by thirty percent. There is no wrong answer and nobody sees her individual responses.")}
 
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <EvScale label="1. I belong to a community of Black girls and women who have my back." value={f.bBelong} onChange={set("bBelong")} />
@@ -504,10 +560,10 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
         </div>
       </div>
 
-      {/* 5. Consent */}
+      {/* 4. Consent */}
       <div style={{ ...card, background: EV.chocolate, borderColor: "rgba(245,240,230,0.14)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
-          <span style={{ width: 30, height: 30, borderRadius: "50%", background: EV.bronze, color: "#FFFFFF", display: "grid", placeItems: "center", fontSize: 13, fontWeight: 700, flexShrink: 0 }}>5</span>
+          <span style={{ width: 30, height: 30, borderRadius: "50%", background: EV.bronze, color: "#FFFFFF", display: "grid", placeItems: "center", fontSize: 13, fontWeight: 700, flexShrink: 0 }}>4</span>
           <h3 className="serif" style={{ margin: 0, fontSize: 25, fontWeight: 600, color: EV.beige }}>Permissions</h3>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 15, color: EV.beige }}>
@@ -604,10 +660,12 @@ function EventsPage({ onNavigate }) {
     <div style={{ background: EV.beige, color: EV.chocolate }}>
       <style>{`
         .ev-card { grid-template-columns: 300px 1fr; }
+        .ev-cal-phone { display: none; }
         @media (max-width: 900px) {
           .ev-card { grid-template-columns: 1fr !important; }
           .ev-grid2, .ev-grid3 { grid-template-columns: 1fr !important; }
-          .ev-months { grid-template-columns: 1fr !important; }
+          .ev-cal-desk { display: none !important; }
+          .ev-cal-phone { display: flex !important; flex-direction: column; }
           .ev-hero-grid { grid-template-columns: 1fr !important; }
         }
         #ev-rsvp a, #ev-rsvp a:hover { color: ${EV.bronze}; }
@@ -646,9 +704,13 @@ function EventsPage({ onNavigate }) {
         <div className="container-wide">
           <EvEyebrow>The Calendar</EvEyebrow>
           <h2 className="serif" style={{ margin: "14px 0 0", fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 600, lineHeight: 1.1 }}>July and August 2026</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22, marginTop: 32 }} className="ev-months">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22, marginTop: 32 }} className="ev-cal-desk">
             <EvMonth year={2026} month={6} events={BGA_EVENTS} onPick={jump} />
             <EvMonth year={2026} month={7} events={BGA_EVENTS} onPick={jump} />
+          </div>
+          <div className="ev-cal-phone" style={{ marginTop: 26, gap: 30 }}>
+            <EvAgenda year={2026} month={6} events={BGA_EVENTS} onPick={jump} />
+            <EvAgenda year={2026} month={7} events={BGA_EVENTS} onPick={jump} />
           </div>
           <p style={{ margin: "22px 0 0", fontSize: 14, color: EV.taupe, lineHeight: 1.6 }}>
             Every Sunday is our free self defense class in Aurora. One-off events sit alongside it. New dates are added here first, so check back or join the newsletter at the bottom of the page.
