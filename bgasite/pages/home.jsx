@@ -4,6 +4,7 @@ function HomePage({ onNavigate }) {
   return (
     <>
       <HeroSection onNavigate={onNavigate} />
+      <SiteSearch onNavigate={onNavigate} />
       <StatBar />
       <MissionSection onNavigate={onNavigate} />
       <PillarsSection onNavigate={onNavigate} />
@@ -106,6 +107,170 @@ function HeroSection({ onNavigate }) {
           
         </div>
       </div>
+    </section>);
+
+}
+
+/*,,, Site search, a dropdown that jumps visitors straight to the right page ,,,*/
+
+const SEARCH_INDEX = [
+{ t: "Programming", r: "programming", g: "Programs", d: "Every BGA program, season by season.", k: "saturday sessions schedule classes workshops calendar" },
+{ t: "Events", r: "events", g: "Programs", d: "The July and August calendar, RSVPs, and sign ups.", k: "calendar rsvp top golf self defense wellness day dates register" },
+{ t: "I Got Next: Girls in Sports", r: "igotnext", g: "Programs", d: "Athletic advocacy and exposure, free to families.", k: "sports athletics wrestling basketball olympian maya nelson recruiting d1" },
+{ t: "Enroll Your Athlete", r: "igotnextenroll", g: "Sign Up", d: "Register a student for the I Got Next cohort.", k: "i got next enrollment register sports join athlete signup" },
+{ t: "The Elite Eight", r: "eliteeight", g: "Programs", d: "The Ivy League college tour for grades 9 to 11.", k: "ivy league tour college harvard yale princeton travel cohort" },
+{ t: "Apply to The Elite Eight", r: "eliteeightapply", g: "Sign Up", d: "The cohort application, transcript included.", k: "elite eight application apply ivy tour transcript deadline" },
+{ t: "HBCU Tour", r: "hbcuinterest", g: "Programs", d: "Join the interest list for the HBCU tour.", k: "hbcu historically black colleges tour bethune spelman howard interest" },
+{ t: "Black Women in Education", r: "educationhub", g: "Programs", d: "A resource hub and educator advocacy training.", k: "educators teachers resources hub training professional development" },
+{ t: "The Orchid Awards", r: "orchids", g: "Programs", d: "Nominate an honoree or sponsor the ceremony.", k: "orchid awards nominate nomination sponsor gala honoree ceremony" },
+{ t: "Ladies First", r: "ladiesfirst", g: "Programs", d: "The stage production and how to get tickets.", k: "ladies first show theatre play production performance" },
+{ t: "Scholarships", r: "scholarships", g: "Students", d: "Scholarships we track for Colorado students.", k: "scholarship money financial aid fafsa awards college funding deadlines" },
+{ t: "Apply to a Program", r: "apply", g: "Sign Up", d: "The general program application.", k: "apply application join enroll register student intake" },
+{ t: "Request Tickets", r: "tickets", g: "Sign Up", d: "Ask for seats at an upcoming show.", k: "tickets seats show reserve request attend" },
+{ t: "Donate Books", r: "donatebooks", g: "Give", d: "The Black Girl Hair Project book drive.", k: "books book drive donate hair project library reading titles" },
+{ t: "Our Impact", r: "impact", g: "About", d: "The numbers, the outcomes, and who we reach.", k: "impact results outcomes data numbers stats funders reach report" },
+{ t: "Our Work", r: "ourwork", g: "About", d: "How Seed, Shape, Sharpen, and Soar fit together.", k: "our work framework seed shape sharpen soar approach model womanist" },
+{ t: "About BGA", r: "about", g: "About", d: "Who we are, our story, and the team.", k: "about team staff board founder history story mission leadership ariel" },
+{ t: "Shop", r: "shop", g: "Give", d: "Merchandise that funds programming.", k: "shop store merch apparel shirts buy gear" },
+{ t: "Contact Us", r: "contact", g: "About", d: "Email, phone, partnerships, and volunteering.", k: "contact email phone call reach out volunteer partner sponsor question address" },
+{ t: "Privacy Policy", r: "privacy", g: "About", d: "How we handle your information.", k: "privacy policy data terms information legal" }];
+
+const SEARCH_POPULAR = ["events", "programming", "igotnext", "eliteeight", "scholarships", "contact"];
+
+function SiteSearch({ onNavigate }) {
+  const [q, setQ] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [hi, setHi] = React.useState(0);
+  const wrap = React.useRef(null);
+
+  const results = React.useMemo(() => {
+    const s = q.trim().toLowerCase();
+    if (!s) return SEARCH_POPULAR.map((r) => SEARCH_INDEX.find((x) => x.r === r)).filter(Boolean);
+    return SEARCH_INDEX.
+    map((x) => {
+      const t = x.t.toLowerCase();
+      let score = 0;
+      if (t.startsWith(s)) score = 100;else
+      if (t.includes(s)) score = 70;else
+      if ((x.k + " " + x.d).toLowerCase().includes(s)) score = 40;
+      return { x, score };
+    }).
+    filter((o) => o.score > 0).
+    sort((a, b) => b.score - a.score).
+    slice(0, 7).
+    map((o) => o.x);
+  }, [q]);
+
+  React.useEffect(() => { setHi(0); }, [q]);
+
+  React.useEffect(() => {
+    const away = (e) => { if (wrap.current && !wrap.current.contains(e.target)) setOpen(false); };
+    document.addEventListener("mousedown", away);
+    return () => document.removeEventListener("mousedown", away);
+  }, []);
+
+  const go = (item) => {
+    if (!item) return;
+    setOpen(false);
+    setQ("");
+    onNavigate(item.r);
+  };
+
+  const keys = (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); setOpen(true); setHi((h) => Math.min(h + 1, results.length - 1)); }
+    if (e.key === "ArrowUp") { e.preventDefault(); setHi((h) => Math.max(h - 1, 0)); }
+    if (e.key === "Enter") { e.preventDefault(); go(results[hi]); }
+    if (e.key === "Escape") { setOpen(false); }
+  };
+
+  return (
+    <section style={{ background: "var(--beige-deep)", borderBottom: "1px solid var(--line-dark)", padding: "30px 0" }}>
+      <div className="container-wide">
+        <div className="bga-search-row" style={{ display: "flex", alignItems: "center", gap: 22, flexWrap: "wrap" }}>
+          <div style={{ flex: "0 0 auto" }}>
+            <div className="eyebrow" style={{ color: "var(--bronze)" }}>Find Your Way</div>
+            <p className="serif" style={{ margin: "8px 0 0", fontSize: 21, fontWeight: 500, lineHeight: 1.25, color: "var(--chocolate)" }}>
+              What are you looking for?
+            </p>
+          </div>
+
+          <div ref={wrap} className="bga-search-field" style={{ position: "relative", flex: "1 1 380px", minWidth: 260, maxWidth: 620 }}>
+            <div style={{ position: "relative" }}>
+              <span aria-hidden style={{ position: "absolute", left: 18, top: "50%", transform: "translateY(-50%)", display: "flex", pointerEvents: "none", opacity: 0.55 }}>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="7.5" cy="7.5" r="5.6" stroke="var(--chocolate)" strokeWidth="1.8" />
+                  <path d="M11.8 11.8L16 16" stroke="var(--chocolate)" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                value={q}
+                onChange={(e) => { setQ(e.target.value); setOpen(true); }}
+                onFocus={() => setOpen(true)}
+                onKeyDown={keys}
+                placeholder="Try tickets, HBCU, scholarships, sports"
+                aria-label="Search the site"
+                aria-expanded={open}
+                style={{
+                  width: "100%", height: 54, padding: "0 18px 0 46px",
+                  fontFamily: "inherit", fontSize: 16, color: "var(--chocolate)",
+                  background: "#FFFFFF", border: `1.5px solid ${open ? "var(--bronze)" : "var(--beige-warm)"}`,
+                  borderRadius: 999, outline: "none", boxShadow: open ? "0 10px 30px -14px rgba(61,44,41,0.35)" : "none"
+                }} />
+              {q &&
+              <button
+                onClick={() => { setQ(""); setOpen(true); }}
+                aria-label="Clear search"
+                style={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", width: 38, height: 38, borderRadius: "50%", border: "none", background: "var(--beige-deep)", color: "var(--taupe)", cursor: "pointer", fontSize: 17, lineHeight: 1 }}>
+                  &times;
+                </button>}
+            </div>
+
+            {open &&
+            <div
+              role="listbox"
+              style={{
+                position: "absolute", top: "calc(100% + 10px)", left: 0, right: 0, zIndex: 40,
+                background: "#FFFFFF", border: "1px solid var(--beige-warm)", borderRadius: 18,
+                boxShadow: "0 26px 60px -22px rgba(61,44,41,0.45)", overflow: "hidden",
+                maxHeight: 396, overflowY: "auto"
+              }}>
+                <div style={{ padding: "12px 18px 8px", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 700, color: "var(--taupe)", opacity: 0.7 }}>
+                  {q.trim() ? `${results.length} ${results.length === 1 ? "match" : "matches"}` : "Most visited"}
+                </div>
+
+                {!results.length &&
+              <div style={{ padding: "6px 18px 20px" }}>
+                    <p style={{ margin: "0 0 14px", fontSize: 16, lineHeight: 1.6, color: "var(--taupe)" }}>
+                      Nothing matched that. Try a program name, or just ask us.
+                    </p>
+                    <button className="btn btn-primary" onClick={() => go({ r: "contact" })}>Contact us</button>
+                  </div>}
+
+                {results.map((item, i) =>
+              <button
+                key={item.r}
+                role="option"
+                aria-selected={i === hi}
+                onMouseEnter={() => setHi(i)}
+                onClick={() => go(item)}
+                style={{
+                  width: "100%", display: "flex", alignItems: "center", gap: 14, textAlign: "left",
+                  padding: "13px 18px", border: "none", cursor: "pointer", fontFamily: "inherit",
+                  background: i === hi ? "var(--beige-deep)" : "transparent", minHeight: 62
+                }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 16.5, fontWeight: 600, color: "var(--chocolate)", lineHeight: 1.3 }}>{item.t}</div>
+                      <div style={{ fontSize: 14.5, color: "var(--taupe)", lineHeight: 1.45, marginTop: 3 }}>{item.d}</div>
+                    </div>
+                    <span style={{ flex: "0 0 auto", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--bronze)", background: "rgba(173,138,86,0.14)", padding: "5px 9px", borderRadius: 99 }}>{item.g}</span>
+                  </button>
+              )}
+              </div>}
+          </div>
+        </div>
+      </div>
+      <style>{`@media (max-width: 900px) { .bga-search-row { flex-direction: column; align-items: stretch !important; gap: 16px !important; } .bga-search-field { max-width: none !important; flex: 1 1 auto !important; } }`}</style>
     </section>);
 
 }
