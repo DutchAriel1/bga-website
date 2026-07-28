@@ -47,6 +47,7 @@ function Nav({ current, onNavigate, dark = false }) {
   const go = (id) => { setMenuOpen(false); setOpenGroup(null); onNavigate(id); };
 
   return (
+    <>
     <header className={"nav-root" + (dark ? " nav-dark" : "")}>
       <div className="container-wide nav-inner">
         <Logo dark={dark} onClick={() => go("home")} />
@@ -77,8 +78,11 @@ function Nav({ current, onNavigate, dark = false }) {
         </button>
       </div>
 
-      {/* Mobile menu drawer */}
-      <div className={"nav-mobile" + (menuOpen ? " open" : "")}>
+      {/* Mobile menu drawer. Deliberately OUTSIDE <header>: nav-root carries a
+         backdrop-filter, which makes it the containing block for any fixed
+         child, so in here the drawer collapsed to header height and looked dead. */}
+      </header>
+      <div className={"nav-mobile" + (menuOpen ? " open" : "")} aria-hidden={!menuOpen}>
         <div className="nav-mobile-head container-wide">
           <Logo onClick={() => go("home")} />
           <button className="nav-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
@@ -125,7 +129,7 @@ function Nav({ current, onNavigate, dark = false }) {
           </button>
         </nav>
       </div>
-    </header>);
+    </>);
 
 }
 
