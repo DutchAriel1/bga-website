@@ -21,7 +21,7 @@ const BGA_EVENTS = [
   rsvp: false,
   registerUrl: "https://forms.gle/p3yVBY5vDDMKwrvZ8",
   bra: true,
-  flyer: "assets/events/self-defense-sunday.png",
+  flyer: "assets/events/site-flyers/self-defense-sunday.png",
   blurb: "Every Sunday our girls train with an Olympian. One hour of real self-defense technique, taught by USA Olympian Maya Nelson, followed by our sports bra drive. Entry is one new sports bra, because a girl cannot train in gear that does not fit her, and no girl should have to choose between comfort and showing up.",
   details: [
   "Free every week. No experience, no membership, and no cost to families.",
@@ -42,7 +42,7 @@ const BGA_EVENTS = [
   city: "Centennial, CO",
   audience: "9th grade girls",
   rsvp: true,
-  flyer: "assets/events/topgolf-9th-graders.png",
+  flyer: "assets/events/site-flyers/topgolf-9th-graders.png",
   blurb: "Our 9th grade class steps onto the tee. A relaxed afternoon of golf, food, and sisterhood built to open a sport most of our girls have never been invited into, and to introduce the freshman cohort to each other before the school year starts.",
   details: [
   "Closed toe shoes are required to play. No sandals, no slides.",
@@ -64,7 +64,7 @@ const BGA_EVENTS = [
   audience: "Black educators",
   rsvp: false,
   soldOut: true,
-  flyer: "assets/events/black-educator-wellness-day.png",
+  flyer: "assets/events/site-flyers/black-educator-wellness-day.png",
   blurb: "A restorative day in the mountains for thirty Black educators at Lincoln Hills, one of the only historically Black mountain resorts in the country. Horseback riding, yoga, sound bowls, archery, and a Black history hike. Built for the women who pour into our daughters all year and rarely get poured into.",
   details: [
   "Limited to thirty Black educators. This one filled before the public announcement.",
