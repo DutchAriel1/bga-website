@@ -6,22 +6,22 @@
 
 /* ============ BRAND PALETTE ============ */
 const BGHP = {
-  pink: "#E8588A",     // Crown Pink
-  blue: "#4F8FD0",     // Sisterhood Blue
-  yellow: "#F2C53D",   // Sunshine Yellow
-  green: "#5E9447",    // Leafy Green
-  orange: "#E8742C",   // Joyful Orange
-  cocoa: "#5A3A2C",    // Cocoa Brown
-  cream: "#FAF3E2",    // Soft Cream
+  pink: "#E8588A", // Crown Pink
+  blue: "#4F8FD0", // Sisterhood Blue
+  yellow: "#F2C53D", // Sunshine Yellow
+  green: "#5E9447", // Leafy Green
+  orange: "#E8742C", // Joyful Orange
+  cocoa: "#5A3A2C", // Cocoa Brown
+  cream: "#FAF3E2", // Soft Cream
   creamDeep: "#F2E6CC",
-  black: "#211C18",    // Rich Black
-  ink: "#3A2C24",
+  black: "#211C18", // Rich Black
+  ink: "#3A2C24"
 };
 
 const bghpFonts = {
   display: '"Fredoka", "Baloo 2", system-ui, sans-serif',
   script: '"Pacifico", "Caveat", cursive',
-  body: '"Nunito", system-ui, sans-serif',
+  body: '"Nunito", system-ui, sans-serif'
 };
 
 /* ============ HAND-DRAWN MOTIFS ============ */
@@ -35,8 +35,8 @@ function HairCrown({ size = 48, fill = BGHP.yellow, outline = BGHP.cocoa, style 
         <circle cx="50" cy="25" r="4.5" fill={BGHP.pink} />
         <circle cx="76" cy="34" r="4.5" fill={BGHP.pink} />
       </g>
-    </svg>
-  );
+    </svg>);
+
 }
 
 function HairFlower({ size = 46, petal = BGHP.blue, center = BGHP.yellow, outline = BGHP.cocoa, style = {} }) {
@@ -44,13 +44,13 @@ function HairFlower({ size = 46, petal = BGHP.blue, center = BGHP.yellow, outlin
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" style={style} aria-hidden>
       <g stroke={outline} strokeWidth="3">
-        {petals.map((_, i) => (
-          <ellipse key={i} cx="50" cy="26" rx="11" ry="19" fill={petal} transform={`rotate(${i * 60} 50 50)`} />
-        ))}
+        {petals.map((_, i) =>
+        <ellipse key={i} cx="50" cy="26" rx="11" ry="19" fill={petal} transform={`rotate(${i * 60} 50 50)`} />
+        )}
         <circle cx="50" cy="50" r="12" fill={center} />
       </g>
-    </svg>
-  );
+    </svg>);
+
 }
 
 function HairLeaf({ w = 76, h = 34, color = BGHP.green, outline = BGHP.cocoa, style = {} }) {
@@ -58,15 +58,15 @@ function HairLeaf({ w = 76, h = 34, color = BGHP.green, outline = BGHP.cocoa, st
     <svg width={w} height={h} viewBox="0 0 120 50" style={style} aria-hidden>
       <g stroke={outline} strokeWidth="3" fill={color} strokeLinecap="round" strokeLinejoin="round">
         <path d="M8 25 Q 60 16, 112 25" fill="none" />
-        {[26, 50, 74, 96].map((x, i) => (
-          <g key={i}>
+        {[26, 50, 74, 96].map((x, i) =>
+        <g key={i}>
             <path d={`M${x} 24 Q ${x - 6} 8, ${x - 16} 12 Q ${x - 10} 22, ${x} 24`} />
             <path d={`M${x + 6} 26 Q ${x + 12} 42, ${x + 22} 38 Q ${x + 16} 28, ${x + 6} 26`} />
           </g>
-        ))}
+        )}
       </g>
-    </svg>
-  );
+    </svg>);
+
 }
 
 function HairPick({ size = 44, color = BGHP.pink, outline = BGHP.cocoa, style = {} }) {
@@ -76,8 +76,8 @@ function HairPick({ size = 44, color = BGHP.pink, outline = BGHP.cocoa, style = 
         {[28, 40, 52, 64, 72].map((x, i) => <line key={i} x1={x} y1="20" x2={x} y2="52" />)}
         <path d="M24 50 H76 V60 Q76 66 70 66 H60 V82 Q60 88 54 88 H46 Q40 88 40 82 V66 H30 Q24 66 24 60 Z" />
       </g>
-    </svg>
-  );
+    </svg>);
+
 }
 
 function HairBonnet({ size = 46, color = BGHP.blue, outline = BGHP.cocoa, style = {} }) {
@@ -87,45 +87,45 @@ function HairBonnet({ size = 46, color = BGHP.blue, outline = BGHP.cocoa, style 
         <path d="M16 56 Q50 14 84 56 Q50 50 16 56 Z" fill={color} />
         <path d="M14 56 Q50 78 86 56 Q86 66 78 70 Q50 84 22 70 Q14 66 14 56 Z" fill={color} />
       </g>
-    </svg>
-  );
+    </svg>);
+
 }
 
 function HairBraid({ size = 40, color = BGHP.cocoa, outline = BGHP.black, style = {} }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" style={style} aria-hidden>
       <g stroke={outline} strokeWidth="3" fill={color} strokeLinejoin="round">
-        {[22, 40, 58, 76].map((y, i) => (
-          <path key={i} d={`M40 ${y} Q50 ${y + 6} 60 ${y} Q50 ${y + 14} 40 ${y + 8} Z`} />
-        ))}
+        {[22, 40, 58, 76].map((y, i) =>
+        <path key={i} d={`M40 ${y} Q50 ${y + 6} 60 ${y} Q50 ${y + 14} 40 ${y + 8} Z`} />
+        )}
         <circle cx="50" cy="86" r="6" fill={BGHP.pink} />
       </g>
-    </svg>
-  );
+    </svg>);
+
 }
 
 /* scattered decorative motif field */
 function MotifScatter() {
   const items = [
-    { C: HairFlower, top: "14%", left: "6%", size: 38, r: -12, props: { petal: BGHP.pink, center: BGHP.yellow } },
-    { C: HairLeaf, top: "62%", left: "3%", size: 64, r: 8 },
-    { C: HairCrown, top: "74%", left: "12%", size: 40, r: -8 },
-    { C: HairFlower, top: "20%", left: "90%", size: 42, r: 14, props: { petal: BGHP.blue } },
-    { C: HairLeaf, top: "70%", left: "88%", size: 64, r: -16 },
-    { C: HairFlower, top: "48%", left: "95%", size: 30, r: 0, props: { petal: BGHP.yellow, center: BGHP.orange } },
-  ];
+  { C: HairFlower, top: "14%", left: "6%", size: 38, r: -12, props: { petal: BGHP.pink, center: BGHP.yellow } },
+  { C: HairLeaf, top: "62%", left: "3%", size: 64, r: 8 },
+  { C: HairCrown, top: "74%", left: "12%", size: 40, r: -8 },
+  { C: HairFlower, top: "20%", left: "90%", size: 42, r: 14, props: { petal: BGHP.blue } },
+  { C: HairLeaf, top: "70%", left: "88%", size: 64, r: -16 },
+  { C: HairFlower, top: "48%", left: "95%", size: 30, r: 0, props: { petal: BGHP.yellow, center: BGHP.orange } }];
+
   return (
     <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
       {items.map((it, i) => {
         const { C } = it;
         return (
           <div key={i} style={{ position: "absolute", top: it.top, left: it.left, transform: `translate(-50%,-50%) rotate(${it.r}deg)`, opacity: 0.9 }}>
-            <C size={it.size} {...(it.props || {})} />
-          </div>
-        );
+            <C size={it.size} {...it.props || {}} />
+          </div>);
+
       })}
-    </div>
-  );
+    </div>);
+
 }
 
 /* ============ PAGE ============ */
@@ -137,8 +137,8 @@ function DonateBooksPage({ onNavigate }) {
       <BGHPGallery />
       <BGHPHire />
       <BGHPFooterBand />
-    </div>
-  );
+    </div>);
+
 }
 
 /* ---- HERO ---- */
@@ -182,17 +182,17 @@ function BGHPHero({ onNavigate }) {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ---- IMAGERY GALLERY ---- */
 function BGHPGallery() {
   const art = [
-    { src: "assets/hairproject/pink-lotion.png", label: "Pink Lotion", note: "the after-bath ritual", accent: BGHP.pink },
-    { src: "assets/hairproject/murrays-beeswax.png", label: "Murray's Beeswax", note: "waves · braids · curls · locs", accent: BGHP.green },
-    { src: "assets/hairproject/murrays-grease.png", label: "Superior Hair Grease", note: "the dresser-top classic", accent: BGHP.orange },
-  ];
+  { src: "assets/hairproject/pink-lotion.png", label: "Pink Lotion", note: "the after-bath ritual", accent: BGHP.pink },
+  { src: "assets/hairproject/murrays-beeswax.png", label: "Murray's Beeswax", note: "waves · braids · curls · locs", accent: BGHP.green },
+  { src: "assets/hairproject/murrays-grease.png", label: "Superior Hair Grease", note: "the dresser-top classic", accent: BGHP.orange }];
+
   return (
     <section style={{ background: BGHP.creamDeep, padding: "84px 0" }}>
       <div className="container-wide">
@@ -207,19 +207,19 @@ function BGHPGallery() {
           </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28, marginTop: 46 }}>
-          {art.map((a, i) => (
-            <figure key={i} style={{ margin: 0, textAlign: "center" }}>
+          {art.map((a, i) =>
+          <figure key={i} style={{ margin: 0, textAlign: "center" }}>
               <FramedArt src={a.src} alt={a.label} accent={a.accent} rotate={i === 1 ? 0 : i === 0 ? -2 : 2} />
               <figcaption style={{ marginTop: 16 }}>
                 <div style={{ fontFamily: bghpFonts.display, fontWeight: 700, fontSize: 20, color: BGHP.cocoa }}>{a.label}</div>
                 <div style={{ fontFamily: bghpFonts.script, fontSize: 18, color: a.accent }}>{a.note}</div>
               </figcaption>
             </figure>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* reusable framed illustration */
@@ -229,8 +229,8 @@ function FramedArt({ src, alt, accent = BGHP.pink, rotate = 0, max = 380 }) {
       <div style={{ background: "#fff", padding: 10, borderRadius: 22, border: `3px solid ${accent}`, boxShadow: "0 18px 40px -20px rgba(58,44,36,0.45)" }}>
         <img src={src} alt={alt} loading="lazy" style={{ display: "block", width: "100%", borderRadius: 14, aspectRatio: "1545 / 2000", objectFit: "cover" }} />
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 /* ---- DONATE SECTION ---- */
@@ -250,20 +250,20 @@ function BGHPDonate() {
     setSubmitting(true);
     try {
       const r = await window.bgaApi("/api/donate-books", { name, email, titles, count, condition, shipping });
-      if (r && r.ok) setSubmitted(true);
-      else setSubmitted(true);
-    } catch (_) { setSubmitted(true); }
-    finally { setSubmitting(false); }
+      if (r && r.ok) setSubmitted(true);else
+      setSubmitted(true);
+    } catch (_) {setSubmitted(true);} finally
+    {setSubmitting(false);}
   };
 
   const suggested = [
-    "Hair Love, Matthew A. Cherry",
-    "Don't Touch My Hair!, Sharee Miller",
-    "I Love My Hair!, Natasha Anastasia Tarpley",
-    "Crown: An Ode to the Fresh Cut, Derrick Barnes",
-    "My Hair is a Garden, Cozbi A. Cabrera",
-    "Bedtime Bonnet, Nancy Redd",
-  ];
+  "Hair Love, Matthew A. Cherry",
+  "Don't Touch My Hair!, Sharee Miller",
+  "I Love My Hair!, Natasha Anastasia Tarpley",
+  "Crown: An Ode to the Fresh Cut, Derrick Barnes",
+  "My Hair is a Garden, Cozbi A. Cabrera",
+  "Bedtime Bonnet, Nancy Redd"];
+
 
   return (
     <section id="bghp-donate" style={{ padding: "84px 0", background: BGHP.cream }}>
@@ -281,8 +281,8 @@ function BGHPDonate() {
                       <Icon.Check size={13} />
                     </span>
                     {s}
-                  </li>
-                );
+                  </li>);
+
               })}
             </ul>
             <p style={{ fontSize: 15, lineHeight: 1.55, marginTop: 20, color: BGHP.green, fontFamily: bghpFonts.script }}>
@@ -295,6 +295,7 @@ function BGHPDonate() {
               <p style={{ margin: "12px 0 0", fontSize: 15, lineHeight: 1.6, fontWeight: 600 }}>
                 The Black Girl Advocate<br />
                 Attn: Hair Project Library<br />
+                send an email for a valid mailing address to president@theblackgirladvocate.org<br />
                 Denver, CO
               </p>
             </div>
@@ -302,8 +303,8 @@ function BGHPDonate() {
 
           {/* right: form */}
           <div style={cardStyle(BGHP.pink)}>
-            {submitted ? (
-              <div style={{ textAlign: "center", padding: "26px 0" }}>
+            {submitted ?
+            <div style={{ textAlign: "center", padding: "26px 0" }}>
                 <div style={{ width: 76, height: 76, borderRadius: "50%", background: BGHP.yellow, color: BGHP.cocoa, display: "grid", placeItems: "center", margin: "0 auto 22px" }}>
                   <Icon.Check size={34} />
                 </div>
@@ -312,9 +313,9 @@ function BGHPDonate() {
                   We'll be in touch within one business day with next steps for your donation.
                 </p>
                 <button onClick={() => setSubmitted(false)} style={{ ...pillBtn("transparent", BGHP.cocoa, BGHP.cocoa), marginTop: 24 }}>Donate more books</button>
-              </div>
-            ) : (
-              <form onSubmit={submit}>
+              </div> :
+
+            <form onSubmit={submit}>
                 <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 999, background: BGHP.pink, color: "#fff", fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 16 }}>
                   <Icon.Heart size={12} /> Book drive
                 </div>
@@ -343,9 +344,9 @@ function BGHPDonate() {
                 <div style={{ marginTop: 16 }}>
                   <BLabel>How will the books reach us?</BLabel>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 8 }}>
-                    {[{ v: "ship", l: "I'll ship them" }, { v: "dropoff", l: "I'll drop them off" }].map((o) => (
-                      <button key={o.v} type="button" onClick={() => setShipping(o.v)} style={toggleBtn(shipping === o.v, BGHP.pink)}>{o.l}</button>
-                    ))}
+                    {[{ v: "ship", l: "I'll ship them" }, { v: "dropoff", l: "I'll drop them off" }].map((o) =>
+                  <button key={o.v} type="button" onClick={() => setShipping(o.v)} style={toggleBtn(shipping === o.v, BGHP.pink)}>{o.l}</button>
+                  )}
                   </div>
                 </div>
 
@@ -367,22 +368,22 @@ function BGHPDonate() {
                   BGA is a 501(c)(3). We'll send a receipt for your in-kind donation.
                 </p>
               </form>
-            )}
+            }
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ---- HIRE BGA SECTION ---- */
 function BGHPHire() {
   const venues = [
-    { C: HairCrown, color: BGHP.orange, label: "Summer camp", desc: "A multi-day crown-care residency or a single joyful workshop block." },
-    { C: HairFlower, color: BGHP.blue, label: "School / classroom", desc: "Standards-friendly sessions on hair history, identity, and self-love." },
-    { C: HairBonnet, color: BGHP.green, label: "Church / faith group", desc: "Intergenerational sister circles and caregiver-and-girl experiences." },
-    { C: HairBraid, color: BGHP.pink, label: "Nonprofit / community", desc: "Pop-up healthy-hair stations and confidence-building programming." },
-  ];
+  { C: HairCrown, color: BGHP.orange, label: "Summer camp", desc: "A multi-day crown-care residency or a single joyful workshop block." },
+  { C: HairFlower, color: BGHP.blue, label: "School / classroom", desc: "Standards-friendly sessions on hair history, identity, and self-love." },
+  { C: HairBonnet, color: BGHP.green, label: "Church / faith group", desc: "Intergenerational sister circles and caregiver-and-girl experiences." },
+  { C: HairBraid, color: BGHP.pink, label: "Nonprofit / community", desc: "Pop-up healthy-hair stations and confidence-building programming." }];
+
 
   const [form, setForm] = React.useState({ org: "", type: "Summer camp", name: "", email: "", count: "", date: "", notes: "" });
   const [submitted, setSubmitted] = React.useState(false);
@@ -395,8 +396,8 @@ function BGHPHire() {
     setSubmitting(true);
     try {
       if (window.bgaApi) await window.bgaApi("/api/hire-bga", form);
-    } catch (_) { /* graceful */ }
-    finally { setSubmitting(false); setSubmitted(true); }
+    } catch (_) {/* graceful */} finally
+    {setSubmitting(false);setSubmitted(true);}
   };
 
   return (
@@ -414,9 +415,9 @@ function BGHPHire() {
           <p style={{ fontFamily: bghpFonts.script, color: BGHP.pink, fontSize: "clamp(20px, 2.8vw, 30px)", margin: "14px 0 0" }}>
             We'll bring the crowns, comb &amp; care to your space.
           </p>
-          <p style={{ fontSize: 17.5, lineHeight: 1.6, maxWidth: 620, margin: "20px auto 0", opacity: 0.9, fontWeight: 500 }}>
-            Book the Black Girl Hair Project for your camp, class, church, or nonprofit, hands-on
-            workshops rooted in hair care, cultural affirmation, and Black girl belonging, led by our team.
+          <p style={{ fontSize: 17.5, lineHeight: 1.6, maxWidth: 620, margin: "20px auto 0", opacity: 0.9, fontWeight: 500 }}>Book the Black Hair Project for your camp, class, church, or nonprofit, hands-on workshops rooted in hair care, and cultural affirmation
+
+
           </p>
         </div>
 
@@ -431,8 +432,8 @@ function BGHPHire() {
                 </div>
                 <h3 style={{ fontFamily: bghpFonts.display, fontWeight: 700, fontSize: 19, color: BGHP.cocoa, margin: 0 }}>{v.label}</h3>
                 <p style={{ fontSize: 14, lineHeight: 1.5, marginTop: 8, opacity: 0.82, fontWeight: 600 }}>{v.desc}</p>
-              </div>
-            );
+              </div>);
+
           })}
         </div>
 
@@ -445,11 +446,11 @@ function BGHPHire() {
             <h3 style={{ fontFamily: bghpFonts.display, fontWeight: 700, fontSize: 24, color: BGHP.yellow, margin: 0 }}>What every booking includes</h3>
             <ul style={{ listStyle: "none", padding: 0, margin: "20px 0 0", display: "flex", flexDirection: "column", gap: 14 }}>
               {[
-                "A trained BGA facilitator + all hands-on materials",
-                "Age-tailored curriculum: hair history, care & confidence",
-                "Take-home crowns, books & healthy-hair keepsakes",
-                "Caregiver connection moment & wrap-up resources",
-              ].map((t, i) => {
+              "A trained BGA facilitator + all hands-on materials",
+              "Age-tailored curriculum: hair history, care & confidence",
+              "Take-home crowns, books & healthy-hair keepsakes",
+              "Caregiver connection moment & wrap-up resources"].
+              map((t, i) => {
                 const dot = [BGHP.pink, BGHP.blue, BGHP.yellow, BGHP.green][i];
                 return (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 13, fontSize: 16, lineHeight: 1.5, fontWeight: 600 }}>
@@ -457,8 +458,8 @@ function BGHPHire() {
                       <Icon.Check size={14} />
                     </span>
                     {t}
-                  </li>
-                );
+                  </li>);
+
               })}
             </ul>
             <div style={{ marginTop: 26, padding: "18px 20px", background: "rgba(242,197,61,0.14)", border: `2px dashed ${BGHP.yellow}`, borderRadius: 16, fontSize: 14.5, lineHeight: 1.55, fontWeight: 600 }}>
@@ -468,8 +469,8 @@ function BGHPHire() {
 
           {/* booking form */}
           <div style={{ background: BGHP.cream, color: BGHP.ink, borderRadius: 22, padding: "34px 34px 30px", border: `3px solid ${BGHP.yellow}` }}>
-            {submitted ? (
-              <div style={{ textAlign: "center", padding: "26px 4px" }}>
+            {submitted ?
+            <div style={{ textAlign: "center", padding: "26px 4px" }}>
                 <div style={{ width: 72, height: 72, borderRadius: "50%", background: BGHP.green, color: "#fff", display: "grid", placeItems: "center", margin: "0 auto 20px" }}>
                   <Icon.Check size={32} />
                 </div>
@@ -478,9 +479,9 @@ function BGHPHire() {
                   Our programming team will reach out within two business days to plan your
                   Black Girl Hair Project experience.
                 </p>
-              </div>
-            ) : (
-              <form onSubmit={submit}>
+              </div> :
+
+            <form onSubmit={submit}>
                 <h3 style={{ fontFamily: bghpFonts.display, fontWeight: 700, fontSize: 24, color: BGHP.cocoa, margin: 0 }}>Request a booking</h3>
                 <p style={{ fontSize: 14, opacity: 0.7, margin: "8px 0 0", fontWeight: 600 }}>Tell us about your group and we'll build the right experience.</p>
 
@@ -503,7 +504,7 @@ function BGHPHire() {
 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 14 }}>
                   <div>
-                    <BLabel># of girls</BLabel>
+                    <BLabel># of students</BLabel>
                     <input value={form.count} onChange={set("count")} placeholder="e.g. 25" style={bghpField} />
                   </div>
                   <div>
@@ -532,12 +533,12 @@ function BGHPHire() {
                   {submitting ? "Sending…" : <>Request a booking <Icon.Arrow size={16} /></>}
                 </button>
               </form>
-            )}
+            }
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ---- FOOTER BAND ---- */
@@ -551,8 +552,8 @@ function BGHPFooterBand() {
         </p>
         <HairFlower size={32} petal={BGHP.blue} center={BGHP.yellow} outline={BGHP.cream} />
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ============ SMALL UI HELPERS ============ */
@@ -561,8 +562,8 @@ function SectionTitle({ kicker, title }) {
     <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
       <div style={{ fontFamily: bghpFonts.script, color: BGHP.orange, fontSize: 24 }}>{kicker}</div>
       <h2 style={{ fontFamily: bghpFonts.display, fontWeight: 700, color: BGHP.cocoa, fontSize: "clamp(30px, 4.4vw, 46px)", lineHeight: 1.08, margin: "4px 0 0" }}>{title}</h2>
-    </div>
-  );
+    </div>);
+
 }
 
 function BLabel({ children }) {
@@ -572,14 +573,14 @@ function BLabel({ children }) {
 const bghpField = {
   width: "100%", padding: "13px 15px", background: "#fff", color: BGHP.ink,
   border: `2px solid ${BGHP.creamDeep}`, borderRadius: 12, outline: "none",
-  fontFamily: bghpFonts.body, fontSize: 15, fontWeight: 600,
+  fontFamily: bghpFonts.body, fontSize: 15, fontWeight: 600
 };
 
 function pillBtn(bg, color, border) {
   return {
     display: "inline-flex", alignItems: "center", gap: 9, padding: "14px 26px",
     background: bg, color, border: `2.5px solid ${border || bg}`, borderRadius: 999,
-    fontFamily: bghpFonts.display, fontWeight: 600, fontSize: 16, cursor: "pointer",
+    fontFamily: bghpFonts.display, fontWeight: 600, fontSize: 16, cursor: "pointer"
   };
 }
 
@@ -587,7 +588,7 @@ function toggleBtn(active, accent) {
   return {
     padding: "13px 16px", background: active ? accent : "#fff",
     color: active ? "#fff" : BGHP.ink, border: `2px solid ${active ? accent : BGHP.creamDeep}`,
-    borderRadius: 12, cursor: "pointer", fontFamily: bghpFonts.body, fontSize: 14.5, fontWeight: 700,
+    borderRadius: 12, cursor: "pointer", fontFamily: bghpFonts.body, fontSize: 14.5, fontWeight: 700
   };
 }
 

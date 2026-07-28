@@ -125,7 +125,6 @@ function EliteEightPage({ onNavigate }) {
       <EEIntro />
       <EESchools />
       <EEExperience />
-      <EEPlanningGuide />
       <EEItinerary />
       <EEEligibility />
       <EEJourney onNavigate={onNavigate} />
@@ -639,60 +638,6 @@ function PhotoPlate({ ratio = "4/5", caption, label = "Imagery", tint = EE.navy,
         </div>
       }
     </div>);
-
-}
-
-/* ====================================================================
-   PLANNING GUIDE — the monthly cohort calendar, September → March
-   ==================================================================== */
-function EEPlanningGuide() {
-  const plan = [
-  { m: "September", k: "Kickoff", t: "Application Opens · Interest Meeting", d: "Parents and students gather for the cohort interest meeting as applications open." },
-  { m: "October", k: "Cohort Meeting I", t: "History of the Ivies", d: "The origins, traditions, and legacy of the eight Ivy League institutions." },
-  { m: "November", k: "Cohort Meeting II", t: "Panel · Black Women at the Ivies", d: "A panel discussion with Black women who have walked through those gates." },
-  { m: "December", k: "Cohort Meeting III", t: "Ivy League Admissions Coach", d: "A working session with an Ivy League admissions coach." },
-  { m: "January", k: "Cohort Meeting IV", t: "Parent Meeting · Payment Due · Schedule Released", d: "Family meeting, tuition due, and the finalized tour schedule released." },
-  { m: "February", k: "Cohort Meeting V", t: "Black & African History of the Ivy Leagues", d: "The deeper history of Black and African presence across the Ivy League." },
-  { m: "March", k: "The Tour", t: "Ivy League Tour · March 23–27", d: "Wheels up. Eight campuses, one unforgettable journey.", tour: true }];
-
-  return (
-    <section style={{ background: EE.navy, color: EE.creamHi, padding: "108px 0" }}>
-      <div className="container-wide">
-        <div style={{ textAlign: "center", marginBottom: 18 }}>
-          <div className="ee-eyebrow" style={{ color: EE.goldSoft, marginBottom: 16 }}>The Planning Guide</div>
-          <h2 className="ee-h2" style={{ margin: 0, fontSize: "clamp(34px, 4.4vw, 58px)", color: EE.creamHi }}>
-            Seven months to the journey.
-          </h2>
-          <p className="ee-body" style={{ margin: "18px auto 0", maxWidth: 560, fontSize: 16.5, color: EE.lavender, fontWeight: 300 }}>
-            One cohort meeting each month, September through February, preparing every scholar for the tour in March.
-          </p>
-        </div>
-
-        <div style={{ display: "flex", justifyContent: "center", margin: "30px 0 8px" }}>
-          <GoldRule width={220} color={EE.goldSoft} />
-        </div>
-
-        <div style={{ maxWidth: 860, margin: "44px auto 0" }}>
-          {plan.map((row, i) =>
-          <div key={row.m} style={{
-            display: "grid", gridTemplateColumns: "190px 1fr", gap: 30,
-            alignItems: "baseline", padding: "26px 0",
-            borderTop: `1px solid rgba(217,184,114,0.28)`,
-            borderBottom: i === plan.length - 1 ? `1px solid rgba(217,184,114,0.28)` : "none"
-          }}>
-              <div>
-                <div className="ee-serif" style={{ fontSize: 27, fontWeight: 600, color: row.tour ? EE.goldSoft : EE.creamHi, lineHeight: 1 }}>{row.m}</div>
-                <div className="ee-eyebrow" style={{ color: EE.goldSoft, fontSize: 10.5, marginTop: 8 }}>{row.k}</div>
-              </div>
-              <div>
-                <h3 className="ee-serif" style={{ margin: 0, fontSize: 22, fontWeight: 600, color: row.tour ? EE.goldSoft : EE.creamHi, lineHeight: 1.2 }}>{row.t}</h3>
-                <p className="ee-body" style={{ margin: "8px 0 0", fontSize: 15, color: EE.lavender, fontWeight: 300 }}>{row.d}</p>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>);
 
 }
 

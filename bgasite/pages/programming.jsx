@@ -42,9 +42,9 @@ function ProgrammingPage({ onNavigate }) {
   {
     id: "hair",
     label: "Black Girl Hair Project",
-    title: "The Black Girl Hair Project",
+    title: "The Black Hair Project",
     tag: "Identity & Wellness · All ages",
-    body: "Our hair is heritage, language, and labor of love. The Black Girl Hair Project is a year round series of styling sessions, workshops, and conversations that affirm Black hair as crown, not coinitsmentary. We pair our girls with Black stylists, education on care, and the kind of mirror moments that root identity early.",
+    body: "Our hair is heritage, language, and labor of love. The Black Girl Project is a year round series of styling sessions, workshops, and conversations that affirm Black hair as crown, not coinitsmentary. We pair our girls with Black stylists, education on care, and the kind of mirror moments that root identity early.",
     photo: "assets/photos/black-girl-hair-project.jpeg",
     photoCaption: "Black Girl Hair Project, sisterhood and crown care.",
     secondaryCta: "Donate Black Girl Hair Books",

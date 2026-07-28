@@ -184,9 +184,9 @@ function MissionSection({ onNavigate }) {return (
           <div style={{ position: "sticky", top: 120 }}>
             <div className="eyebrow" style={{ color: "var(--lavender)" }}>01, Our Mission</div>
             <h2 className="display d-lg" style={{ margin: "24px 0 0" }}>
-              A space where Black girls
-              <span className="serif" style={{ fontStyle: "italic", fontWeight: 300 }}> arrive whole </span>
-              and leave unshaken.
+              Empowering Brilliant girls through
+              <span className="serif" style={{ fontStyle: "italic", fontWeight: 300 }}> academics, athletics </span>
+              and the arts.
             </h2>
           </div>
           <div>
@@ -197,10 +197,10 @@ function MissionSection({ onNavigate }) {return (
               We build the rooms our girls deserve: Saturday programming, HBCU pathways, sports, the arts, and a cohort of Black women who refuse to let any one of them walk in alone.
             </p>
             <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, borderTop: "1px solid var(--line-dark)" }}>
-              <PillarMini icon={<Icon.Flower />} title="Seed" body="We plant identity, belonging, and possibility from the very first Saturday." />
-              <PillarMini icon={<Icon.Sparkle />} title="Shape" body="Cultural programming, the arts, and womanist study, she comes into form." left />
-              <PillarMini icon={<Icon.Book />} title="Sharpen" body="Academic enrichment, college prep, advocacy in every school meeting." />
-              <PillarMini icon={<Icon.Users />} title="Soar" body="The Elite Eight, the HBCU tour, and a sisterhood of advocates who stay." left />
+              <PillarMini title="Seed" body="We plant identity, belonging, and possibility from the very first Saturday." />
+              <PillarMini title="Shape" body="Cultural programming, the arts, and womanist study, she comes into form." left />
+              <PillarMini title="Sharpen" body="Academic enrichment, college prep, advocacy in every school meeting." />
+              <PillarMini title="Soar" body="The Elite Eight, the HBCU tour, and a sisterhood of advocates who stay." left />
             </div>
           </div>
         </div>
@@ -209,7 +209,7 @@ function MissionSection({ onNavigate }) {return (
 
 }
 
-function PillarMini({ icon, title, body, left = false }) {
+function PillarMini({ title, body, left = false }) {
   return (
     <div style={{
       padding: "28px 0",
@@ -217,7 +217,6 @@ function PillarMini({ icon, title, body, left = false }) {
       borderBottom: "1px solid var(--line-dark)",
       borderLeft: left ? "1px solid var(--line-dark)" : "none"
     }}>
-      <div style={{ color: "var(--lavender)", marginBottom: 14 }}>{icon}</div>
       <h4 style={{ margin: 0, fontSize: 18, fontFamily: "Noto Serif", fontWeight: 500 }}>{title}</h4>
       <p style={{ fontSize: 14.5, lineHeight: 1.55, margin: "8px 0 0", opacity: 0.72 }}>{body}</p>
     </div>);
@@ -415,27 +414,29 @@ function DonorSection({ onNavigate }) {
   return (
     <section id="fund-the-year" className="section" style={{ background: "var(--beige-deep)" }}>
       <div className="container-wide">
+        <div style={{ marginBottom: 28, maxWidth: 760 }}>
+          <div className="chip chip-chocolate" style={{ marginBottom: 18 }}>
+            <Icon.Heart size={12} /> For Funders
+          </div>
+          <h2 className="display d-lg" style={{ margin: 0 }}>
+            Fund a girl's
+            <span className="serif" style={{ fontStyle: "italic", fontWeight: 300 }}> whole year.</span>
+          </h2>
+        </div>
         <div style={{
           background: "var(--chocolate)",
           color: "var(--beige)",
           borderRadius: 28,
-          padding: "80px 72px",
+          padding: "44px 48px",
           display: "grid",
           gridTemplateColumns: "1.3fr 1fr",
-          gap: 64,
-          alignItems: "center",
+          gap: 48,
+          alignItems: "start",
           position: "relative",
           overflow: "hidden"
         }}>
           <div style={{ position: "relative" }}>
-            <div className="chip chip-on-dark" style={{ marginBottom: 24 }}>
-              <Icon.Heart size={12} /> For Funders
-            </div>
-            <h2 className="display d-lg" style={{ margin: 0 }}>
-              Fund a girl's
-              <span className="serif" style={{ fontStyle: "italic", fontWeight: 300 }}> whole year.</span>
-            </h2>
-            <p style={{ fontSize: 18, lineHeight: 1.6, marginTop: 24, opacity: 0.85, maxWidth: 520 }}>
+            <p style={{ fontSize: 18, lineHeight: 1.6, margin: 0, opacity: 0.85, maxWidth: 520 }}>
               Most of what we run is offered at no cost to families; select experiences like our college tours are paid, with scholarships available. Your gift puts a girl in The Elite Eight, on the HBCU tour, and in every Saturday room she chooses.
               Sustainers join the Sister Funders Circle and our quarterly impact briefings.
             </p>
@@ -457,7 +458,21 @@ function DonorSection({ onNavigate }) {
               dangerouslySetInnerHTML={{
                 __html: '<dbox-widget campaign="blackgirlunityspacedonations" type="donation_form" enable-auto-scroll="true"></dbox-widget>'
               }} />
-            
+
+            {/* ColoradoGives, for donors claiming the state charitable tax credit */}
+            <div style={{ marginTop: 8, padding: "20px 16px 8px", borderTop: "1px solid var(--beige-warm)", textAlign: "center" }}>
+              <div style={{ fontSize: 13, color: "var(--taupe)", lineHeight: 1.55, marginBottom: 14, maxWidth: 360, marginLeft: "auto", marginRight: "auto" }}>
+                Colorado donor? Give through <strong style={{ color: "var(--chocolate)" }}>ColoradoGives</strong> to claim the state charitable tax credit.
+              </div>
+              <a
+                href="https://www.coloradogives.org/organization/Black-Girl-Advocate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ background: "#058094", color: "#FFFFFF", width: "100%", justifyContent: "center", textDecoration: "none" }}>
+                Give through ColoradoGives <Icon.Arrow size={16} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

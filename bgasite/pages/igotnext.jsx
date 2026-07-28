@@ -134,6 +134,9 @@ function IGotNextPage({ onNavigate }) {
       {/* ============== TICKER BAR ============== */}
       <IGNTicker />
 
+      {/* ============== YOUTH SPORTS GIVING DAY ============== */}
+      <IGNGivingDay />
+
       {/* ============== SPORTS ============== */}
       <IGNSports onNavigate={onNavigate} />
 
@@ -232,22 +235,19 @@ function IGNHero({ onNavigate }) {
         {/* Bottom stat strip */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: "1fr",
           gap: 24,
           marginTop: 96,
           paddingTop: 32,
           borderTop: `2px solid ${IGN.navy}20`
         }}>
           {[
-          { n: "3", l: "Sports & Counting" },
-          { n: "150+", l: "Athletes Served" },
-          { n: "12", l: "Coaches & Facilitators" },
-          { n: "$0", l: "Cost to Families" }].
+          { n: "50+", l: "Athletes Served" }].
           map((s, i) =>
           <div key={i} style={{ textAlign: "center" }}>
               <div className="ign-v" style={{
               fontSize: "clamp(38px, 5vw, 64px)",
-              color: [IGN.pink, IGN.gold, IGN.green, IGN.purple][i],
+              color: [IGN.gold][i],
               WebkitTextStroke: `1.5px ${IGN.navy}`
             }}>
                 {s.n}
@@ -300,6 +300,77 @@ function IGNTicker() {
         <span style={{ paddingRight: 60 }}>{line}&nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;{line}&nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp;</span>
       </div>
     </div>);
+
+}
+
+/* ====================================================================
+   YOUTH SPORTS GIVING DAY (funder spotlight)
+   ==================================================================== */
+function IGNGivingDay() {
+  const funds = [
+  { t: "Gear That Fits", d: "Sports bras and athletic essentials so every girl can play comfortable and confident.", c: IGN.pink },
+  { t: "Free Programming", d: "Self-defense, conditioning, and advocacy at no cost to families.", c: IGN.gold },
+  { t: "College Pathways", d: "NCAA guidance, panels, and recruiting support from 9th grade on.", c: IGN.green }];
+
+  return (
+    <section id="ign-givingday" style={{ background: IGN.white, padding: "100px 0", borderBottom: `4px solid ${IGN.navy}` }}>
+      <div className="container-wide">
+        <div style={{
+          display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: "clamp(32px,5vw,72px)", alignItems: "center"
+        }}>
+          {/* Left: pitch */}
+          <div>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 10,
+              background: IGN.gold, color: IGN.navy,
+              border: `3px solid ${IGN.navy}`, borderRadius: 999,
+              padding: "10px 20px", marginBottom: 24,
+              fontFamily: ignFonts.body, fontWeight: 800, fontSize: 13,
+              letterSpacing: "0.08em", textTransform: "uppercase",
+              boxShadow: `4px 4px 0 ${IGN.pink}`
+            }}>
+              <span aria-hidden>★</span> September 1, 2026
+            </div>
+            <h2 className="ign-h" style={{ margin: 0, fontSize: "clamp(36px, 4.8vw, 68px)", color: IGN.navy }}>
+              COLORADO YOUTH SPORTS <span style={{ color: IGN.pink }}>GIVING DAY.</span>
+            </h2>
+            <p style={{ margin: "20px 0 0", maxWidth: 560, fontSize: 17, lineHeight: 1.6, color: IGN.navy, opacity: 0.85, fontWeight: 500 }}>
+              I Got Next is part of Colorado Youth Sports Giving Day, a statewide movement led by the Daniels Fund and Project Play Colorado to get more kids in the game. Gifts made through ColoradoGives are matched dollar for dollar by statewide sponsors, while match funds last. Your gift goes twice as far for our girls.
+            </p>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 32 }}>
+              <a
+                className="ign-btn ign-btn-pink ign-no-underline"
+                href="https://www.coloradogives.org/organization/Black-Girl-Advocate"
+                target="_blank" rel="noopener noreferrer">
+                Give on ColoradoGives →
+              </a>
+              <a
+                className="ign-btn ign-btn-outline ign-no-underline"
+                href="mailto:ariel@theblackgirladvocate.org?subject=Sponsoring%20I%20Got%20Next">
+                Become a Sponsor
+              </a>
+            </div>
+            <p style={{ margin: "18px 0 0", fontSize: 13.5, fontWeight: 600, color: IGN.navy, opacity: 0.6 }}>
+              Colorado donors may also qualify for the state charitable tax credit.
+            </p>
+          </div>
+
+          {/* Right: what your gift funds */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div className="ign-eyebrow" style={{ color: IGN.navy, opacity: 0.65 }}>What Your Gift Funds</div>
+            {funds.map((f, i) =>
+            <div key={i} style={{
+              background: IGN.cream, border: `3px solid ${IGN.navy}`, borderRadius: 18,
+              padding: "20px 24px", boxShadow: `6px 6px 0 ${f.c}`
+            }}>
+                <div className="ign-h" style={{ fontSize: 22, color: IGN.navy }}>{f.t}</div>
+                <p style={{ margin: "6px 0 0", fontSize: 14.5, lineHeight: 1.55, color: IGN.navy, opacity: 0.82, fontWeight: 500 }}>{f.d}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>);
 
 }
 
@@ -400,7 +471,7 @@ function IGNSports({ onNavigate }) {
           </div>
 
           {/* entry pill */}
-          <div style={{ marginTop: 36, position: "relative", zIndex: 2 }}>
+          <div style={{ marginTop: 36, position: "relative", zIndex: 2, display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
             <div style={{
               display: "inline-block", background: IGN.pink, color: IGN.white,
               borderRadius: 999, padding: "18px 34px", border: `3px solid ${IGN.navy}`,
@@ -409,6 +480,12 @@ function IGNSports({ onNavigate }) {
               <div className="ign-h" style={{ fontSize: "clamp(18px,2.2vw,26px)", letterSpacing: "0.04em" }}>Entry = One New Sports Bra</div>
               <div style={{ fontFamily: ignFonts.body, fontWeight: 600, fontSize: 14, opacity: 0.92, marginTop: 2 }}>Your donation is your ticket in</div>
             </div>
+            <a
+              className="ign-btn ign-btn-gold ign-no-underline"
+              href="https://www.wrestlefullnelson.com/"
+              target="_blank" rel="noopener noreferrer">
+              Learn More About Our Wrestling Coach →
+            </a>
           </div>
         </div>
 
@@ -560,7 +637,7 @@ function IGNComponents() {
     color: IGN.crimson, glyph: "shield"
   },
   {
-    t: "MENTORSHIP",
+    t: "ADVOCACY",
     body: "Connecting our girls with Black women in sports and wellness careers.",
     color: IGN.green, glyph: "users"
   },
