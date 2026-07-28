@@ -39,6 +39,7 @@ const ROUTE_META = {
   eliteeightapply: { t: "Apply | The Elite Eight Ivy League Tour | The Black Girl Advocate", d: "Apply to The Elite Eight, a curated Ivy League college tour for Black girls in grades 9–11. Upload your transcript and counselor details to begin." },
   eliteeight:  { t: "The Elite Eight: Ivy League Tour | The Black Girl Advocate", d: "A curated Ivy League college tour for Black girls in grades 9–11. Campuses, admissions, alumnae, and sisterhood." },
   privacy:     { t: "Privacy Policy | The Black Girl Advocate", d: "How The Black Girl Advocate collects, uses, and protects your information, including media releases and youth data." },
+  events:      { t: "Events Calendar | The Black Girl Advocate", d: "The Black Girl Advocate events calendar for Colorado. Game days, tours, circles, and gatherings for Black girls in grades 6 through 12. RSVP required." },
   comingsoon:  { t: "Upcoming Events | The Black Girl Advocate", d: "Upcoming events and programming from The Black Girl Advocate." },
 };
 
@@ -70,7 +71,7 @@ function App() {
     el.textContent = css;
   }, [t.headerStyle, t.headerOpacity, t.logoSize]);
 
-  const ROUTES = ["home", "about", "ourwork", "impact", "programming", "shop", "contact", "scholarships", "tickets", "donatebooks", "apply", "hbcuinterest", "comingsoon", "igotnext", "igotnextenroll", "orchids", "educationhub", "eliteeight", "eliteeightapply", "ladiesfirst", "privacy"];
+  const ROUTES = ["home", "about", "ourwork", "impact", "programming", "shop", "contact", "scholarships", "tickets", "donatebooks", "apply", "hbcuinterest", "events", "comingsoon", "igotnext", "igotnextenroll", "orchids", "educationhub", "eliteeight", "eliteeightapply", "ladiesfirst", "privacy"];
   const initial = () => {
     const hash = window.location.hash.replace("#/", "").split("?")[0];
     return ROUTES.includes(hash) ? hash : "home";
@@ -128,6 +129,7 @@ function App() {
     donatebooks: DonateBooksPage,
     apply: ApplyPage,
     hbcuinterest: HBCUInterestPage,
+    events: EventsPage,
     comingsoon: ComingSoonPage,
     igotnext: IGotNextPage,
     igotnextenroll: IGotNextEnrollPage,
