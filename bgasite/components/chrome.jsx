@@ -34,6 +34,7 @@ function Nav({ current, onNavigate, dark = false }) {
       { id: "ladiesfirst", label: "Ladies First" },
       { id: "hbcuinterest", label: "HBCU Tour" },
       { id: "educationhub", label: "Black Women in Education" }] },
+    { id: "events", label: "Events" },
     { id: "shop", label: "Shop" },
     { id: "contact", label: "Contact" }];
 
@@ -154,6 +155,7 @@ function Footer({ onNavigate }) {
               <li onClick={() => onNavigate("ourwork")}>Our Work</li>
               <li onClick={() => onNavigate("impact")}>Impact & Transparency</li>
               <li onClick={() => onNavigate("programming")}>Programming</li>
+              <li onClick={() => onNavigate("events")}>Events</li>
               <li onClick={() => onNavigate("shop")}>Shop</li>
             </ul>
           </div>
