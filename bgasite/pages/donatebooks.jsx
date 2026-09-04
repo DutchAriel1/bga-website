@@ -151,14 +151,11 @@ function BGHPHero({ onNavigate }) {
           {/* left: copy */}
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "9px 20px", borderRadius: 999, background: BGHP.green, color: BGHP.cream, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-              <HairCrown size={20} fill={BGHP.yellow} outline={BGHP.cream} /> The Black Girl Hair Project
+              <HairCrown size={20} fill={BGHP.yellow} outline={BGHP.cream} /> THE BLACK HAIR PROJECT
             </div>
             <h1 style={{ fontFamily: bghpFonts.display, fontWeight: 700, color: BGHP.cocoa, fontSize: "clamp(38px, 5.4vw, 68px)", lineHeight: 1.03, letterSpacing: "-0.01em", margin: "24px 0 0" }}>
-              Donate <span style={{ color: BGHP.pink }}>Black Girl Hair</span> books.
+              Donate <span style={{ color: BGHP.pink }}>Black Hair</span> books.
             </h1>
-            <p style={{ fontFamily: bghpFonts.script, color: BGHP.green, fontSize: "clamp(23px, 3vw, 34px)", margin: "16px 0 0" }}>
-              Her Hair. Her Crown. Her Story.
-            </p>
             <p style={{ fontSize: 18, lineHeight: 1.6, maxWidth: 520, margin: "22px 0 0", color: BGHP.ink, opacity: 0.85, fontWeight: 500 }}>
               Help us build a library that reflects every crown, new or gently used picture books,
               middle grade, and YA titles centering Black hair, identity, and joy.
@@ -201,10 +198,6 @@ function BGHPGallery() {
           <h2 style={{ fontFamily: bghpFonts.display, fontWeight: 700, color: BGHP.cocoa, fontSize: "clamp(30px, 4.4vw, 46px)", lineHeight: 1.08, margin: "4px 0 0" }}>
             Our Hair. Our History. <span style={{ color: BGHP.pink }}>Our Future.</span>
           </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.6, margin: "16px auto 0", color: BGHP.ink, opacity: 0.82, fontWeight: 500, maxWidth: 600 }}>
-            The jars and bottles that lined every bathroom shelf, reimagined as art, so a Black girl
-            sees her crown, her culture, and her care celebrated.
-          </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28, marginTop: 46 }}>
           {art.map((a, i) =>
@@ -285,9 +278,6 @@ function BGHPDonate() {
 
               })}
             </ul>
-            <p style={{ fontSize: 15, lineHeight: 1.55, marginTop: 20, color: BGHP.green, fontFamily: bghpFonts.script }}>
-              Other titles are welcome, anything that helps a Black girl see herself.
-            </p>
 
             <div style={{ marginTop: 26, padding: 24, background: BGHP.blue, borderRadius: 18, color: BGHP.cream, position: "relative", overflow: "hidden" }}>
               <HairBonnet size={56} color={BGHP.cream} outline={BGHP.blue} style={{ position: "absolute", right: 12, top: 12, opacity: 0.35 }} />
@@ -381,7 +371,7 @@ function BGHPHire() {
   const venues = [
   { C: HairCrown, color: BGHP.orange, label: "Summer camp", desc: "A multi-day crown-care residency or a single joyful workshop block." },
   { C: HairFlower, color: BGHP.blue, label: "School / classroom", desc: "Standards-friendly sessions on hair history, identity, and self-love." },
-  { C: HairBonnet, color: BGHP.green, label: "Church / faith group", desc: "Intergenerational sister circles and caregiver-and-girl experiences." },
+  { C: HairBonnet, color: BGHP.green, label: "Church / faith group", desc: "Intergenerational caregiver experiences." },
   { C: HairBraid, color: BGHP.pink, label: "Nonprofit / community", desc: "Pop-up healthy-hair stations and confidence-building programming." }];
 
 
@@ -548,7 +538,7 @@ function BGHPFooterBand() {
       <div className="container-wide" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
         <HairFlower size={32} petal={BGHP.yellow} center={BGHP.orange} outline={BGHP.cream} />
         <p style={{ margin: 0, fontFamily: bghpFonts.script, fontSize: "clamp(18px, 2.4vw, 26px)" }}>
-          A program rooted in hair care, cultural affirmation, and Black girl belonging.
+          A program rooted in hair care, cultural affirmation, and Black student belonging.
         </p>
         <HairFlower size={32} petal={BGHP.blue} center={BGHP.yellow} outline={BGHP.cream} />
       </div>
