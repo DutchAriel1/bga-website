@@ -1,6 +1,6 @@
 /* The Orchid Award 2027, nomination + sponsorship.
    A lavender orchid theme: plum, orchid, lavender, cream, with a gold accent.
-   Nominations route to /api/orchid-nominate, sponsorships to /api/orchid-sponsor
+   Nominations and sponsorships route to /api/orchid (mode: nominate | sponsor)
    (both notify ariel@theblackgirladvocate.org). */
 
 const ORC = {
@@ -117,14 +117,7 @@ function OrchidsPage({ onNavigate, initialIntent }) {
       {/* ===== HERO ===== */}
       <section style={{ position: "relative", overflow: "hidden", background: `linear-gradient(160deg, ${ORC.plumDeep}, ${ORC.plum} 70%)`, color: ORC.creamHi, padding: "96px 0 104px" }}>
         {/* floating blooms */}
-        <div aria-hidden style={{ position: "absolute", top: -20, left: -30, transform: "rotate(-12deg)" }}><OrchidBloom size={220} opacity={0.18} /></div>
-        <div aria-hidden style={{ position: "absolute", bottom: -50, right: -20, transform: "rotate(20deg)" }}><OrchidBloom size={300} opacity={0.16} /></div>
-        <div aria-hidden style={{ position: "absolute", top: "40%", right: "30%", transform: "rotate(8deg)" }}><OrchidBloom size={90} opacity={0.1} /></div>
-
         <div className="container-wide" style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
-            <OrchidBloom size={88} petal={ORC.lilac} lip={ORC.lip} throat={ORC.plumDeep} />
-          </div>
           <div className="orc-eyebrow" style={{ color: ORC.lilac, marginBottom: 18 }}>The Orchid Award · 2027</div>
           <h1 className="orc-h" style={{ margin: 0, fontSize: "clamp(46px, 6.4vw, 92px)" }}>
             Honoring the women who <span style={{ fontStyle: "italic", color: ORC.orchidSoft }}>bloom</span> where it is hardest.
@@ -156,7 +149,6 @@ function OrchidsPage({ onNavigate, initialIntent }) {
 
           {nomDone ?
           <div style={{ marginTop: 40, background: ORC.creamHi, border: `1.5px solid ${ORC.lilac}`, borderRadius: 20, padding: "56px 40px", textAlign: "center" }}>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}><OrchidBloom size={72} /></div>
               <h3 className="orc-h" style={{ margin: 0, fontSize: 32, color: ORC.plumDeep }}>Nomination received.</h3>
               <p className="orc-body" style={{ margin: "14px auto 0", maxWidth: 460, fontSize: 16, color: ORC.ink, opacity: 0.8 }}>
                 Thank you for lifting her up. The Orchid Award committee will review every nomination ahead of the 2027 ceremony.
@@ -169,7 +161,6 @@ function OrchidsPage({ onNavigate, initialIntent }) {
 
       {/* ===== SPONSOR ===== */}
       <section id="orchid-sponsor" style={{ padding: "96px 0", background: `linear-gradient(160deg, ${ORC.plum}, ${ORC.plumDeep})`, color: ORC.creamHi, position: "relative", overflow: "hidden" }}>
-        <div aria-hidden style={{ position: "absolute", top: -40, right: -40, transform: "rotate(18deg)" }}><OrchidBloom size={260} opacity={0.12} /></div>
         <div className="container-wide" style={{ position: "relative", zIndex: 2, maxWidth: 1040, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="orc-eyebrow" style={{ color: ORC.lilac, marginBottom: 14 }}>Sponsor · 2027</div>
@@ -182,7 +173,6 @@ function OrchidsPage({ onNavigate, initialIntent }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18, marginBottom: 52 }}>
             {SPONSOR_TIERS.map((t, i) =>
             <div key={t.name} className="orc-tier" style={{ background: i === 3 ? ORC.gold : ORC.creamHi, color: i === 3 ? ORC.plumDeep : ORC.ink, borderRadius: 18, padding: "26px 22px", transition: "transform .2s ease, box-shadow .2s ease", display: "flex", flexDirection: "column" }}>
-                <OrchidBloom size={40} petal={i === 3 ? ORC.plum : ORC.orchidSoft} lip={ORC.lip} throat={ORC.plumDeep} />
                 <div className="orc-eyebrow" style={{ marginTop: 14, color: i === 3 ? ORC.plum : ORC.orchid, fontSize: 11 }}>{t.name}</div>
                 <div className="orc-h" style={{ fontSize: 32, margin: "6px 0 10px" }}>{t.amt}</div>
                 <p className="orc-body" style={{ margin: 0, fontSize: 13.5, opacity: 0.82 }}>{t.blurb}</p>
@@ -193,7 +183,6 @@ function OrchidsPage({ onNavigate, initialIntent }) {
           <div style={{ maxWidth: 720, margin: "0 auto" }}>
             {spDone ?
             <div style={{ background: ORC.creamHi, color: ORC.ink, border: `1.5px solid ${ORC.lilac}`, borderRadius: 20, padding: "56px 40px", textAlign: "center" }}>
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}><OrchidBloom size={72} /></div>
                 <h3 className="orc-h" style={{ margin: 0, fontSize: 32, color: ORC.plumDeep }}>Thank you for sponsoring.</h3>
                 <p className="orc-body" style={{ margin: "14px auto 0", maxWidth: 460, fontSize: 16, opacity: 0.8 }}>
                   Our team will reach out to confirm your sponsorship details and benefits for the 2027 Orchid Award.
@@ -229,7 +218,8 @@ function OrchidNominateForm({ onDone }) {
     if (!canSubmit) return;
     setSubmitting(true); setApiError(null);
     try {
-      const r = await window.bgaApi("/api/orchid-nominate", {
+      const r = await window.bgaApi("/api/orchid", {
+        mode: "nominate",
         nomineeName, nomineeEmail, institution, category, reason,
         nominatorName, nominatorEmail, relationship
       });
@@ -310,7 +300,8 @@ function OrchidSponsorForm({ onDone }) {
     if (!canSubmit) return;
     setSubmitting(true); setApiError(null);
     try {
-      const r = await window.bgaApi("/api/orchid-sponsor", {
+      const r = await window.bgaApi("/api/orchid", {
+        mode: "sponsor",
         sponsorName, contactName, email, phone, level, message
       });
       if (!r.ok) { setApiError("Please review the highlighted fields."); setSubmitting(false); return; }

@@ -71,7 +71,7 @@ function App() {
     el.textContent = css;
   }, [t.headerStyle, t.headerOpacity, t.logoSize]);
 
-  const ROUTES = ["home", "about", "ourwork", "impact", "programming", "shop", "contact", "scholarships", "tickets", "donatebooks", "apply", "hbcuinterest", "events", "comingsoon", "igotnext", "igotnextenroll", "orchids", "educationhub", "eliteeight", "eliteeightapply", "ladiesfirst", "privacy"];
+  const ROUTES = ["home", "about", "ourwork", "impact", "programming", "shop", "contact", "scholarships", "icap", "tickets", "donatebooks", "apply", "hbcuinterest", "events", "blockparty", "comingsoon", "igotnext", "igotnextenroll", "orchids", "educationhub", "eliteeight", "eliteeightapply", "ladiesfirst", "privacy"];
   const initial = () => {
     const hash = window.location.hash.replace("#/", "").split("?")[0];
     return ROUTES.includes(hash) ? hash : "home";
@@ -125,11 +125,13 @@ function App() {
     shop: ShopPage,
     contact: ContactPage,
     scholarships: ScholarshipsPage,
+    icap: ICAPPage,
     tickets: TicketsPage,
     donatebooks: DonateBooksPage,
     apply: ApplyPage,
     hbcuinterest: HBCUInterestPage,
     events: EventsPage,
+    blockparty: BlockPartyPage,
     comingsoon: ComingSoonPage,
     igotnext: IGotNextPage,
     igotnextenroll: IGotNextEnrollPage,

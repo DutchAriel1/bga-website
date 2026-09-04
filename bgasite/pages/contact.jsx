@@ -1,11 +1,8 @@
 function ContactPage({ onNavigate }) {
-  const [intent, setIntent] = React.useState("donate");
+  const [intent, setIntent] = React.useState("enroll");
   const [submitted, setSubmitted] = React.useState(false);
-  const [amount, setAmount] = React.useState(250);
-  const [recurring, setRecurring] = React.useState(true);
 
   const intents = [
-  { id: "donate", label: "Donate", icon: <Icon.Heart size={16} /> },
   { id: "enroll", label: "Enroll a Student", icon: <Icon.Sparkle size={16} /> },
   { id: "partner", label: "Partner / Grant", icon: <Icon.Users size={16} /> },
   { id: "volunteer", label: "Volunteer / Mentor", icon: <Icon.Flower size={16} /> },
@@ -15,7 +12,6 @@ function ContactPage({ onNavigate }) {
   const [submitting, setSubmitting] = React.useState(false);
   const submit = async (e) => {
     e.preventDefault();
-    if (intent === "donate") { setSubmitted(true); return; } // donate routes to Donorbox widget
     if (submitting) return;
     setSubmitting(true);
     const fd = new FormData(e.currentTarget);
@@ -80,12 +76,9 @@ function ContactPage({ onNavigate }) {
             </aside>
 
             {/* Right, contextual form */}
-            <div style={{ background: intent === "donate" ? "var(--chocolate-2)" : "var(--beige)", color: intent === "donate" ? "var(--beige)" : "var(--ink)", borderRadius: 24, padding: 48, border: intent === "donate" ? "none" : "1px solid var(--line-dark)" }}>
+            <div style={{ background: "var(--beige)", color: "var(--ink)", borderRadius: 24, padding: 48, border: "1px solid var(--line-dark)" }}>
               {submitted ?
-              <SuccessMessage intent={intent} onReset={() => setSubmitted(false)} dark={intent === "donate"} /> :
-              intent === "donate" ?
-              <DonateForm amount={amount} setAmount={setAmount} recurring={recurring} setRecurring={setRecurring} onSubmit={submit} /> :
-
+              <SuccessMessage intent={intent} onReset={() => setSubmitted(false)} dark={false} /> :
               <StandardForm intent={intent} onSubmit={submit} />
               }
             </div>
@@ -109,82 +102,6 @@ function ContactPage({ onNavigate }) {
         </div>
       </section>
     </>);
-
-}
-
-function DonateForm({ amount, setAmount, recurring, setRecurring, onSubmit }) {
-  const presets = [50, 100, 250, 500, 1000, 2500];
-  return (
-    <form onSubmit={onSubmit}>
-      <div className="chip chip-on-dark" style={{ marginBottom: 24 }}><Icon.Heart size={12} /> Secure donation</div>
-      <h2 className="display d-md" style={{ margin: 0 }}>Fund a girl's <span className="serif" style={{ fontStyle: "italic", fontWeight: 400 }}>whole year.</span></h2>
-      <p style={{ fontSize: 15.5, lineHeight: 1.6, marginTop: 16, opacity: 0.78 }}>$600 supports a Senior Saturday session. $1,500 sponsors a girl on the HBCU tour. $3,500 sponsors one Elite Eight scholar's Ivy League summer program.</p>
-
-      {/* Where the money goes */}
-      <div style={{ marginTop: 24, padding: "20px 22px", border: "1px solid rgba(245,240,230,0.18)", borderRadius: 14, background: "rgba(245,240,230,0.04)" }}>
-        <div style={{ fontFamily: "Noto Sans", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.6, marginBottom: 12 }}>
-          Where your gift goes
-        </div>
-        <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: 8, fontSize: 14, lineHeight: 1.5 }}>
-          <li style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 12, alignItems: "baseline" }}>
-            <span style={{ fontWeight: 700, color: "var(--bronze-soft)" }}>82&thinsp;%</span>
-            <span style={{ opacity: 0.85 }}>Direct programming &mdash; The Elite Eight, HBCU Tour, Saturday sessions, scholarships, books, transportation, meals.</span>
-          </li>
-          <li style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 12, alignItems: "baseline" }}>
-            <span style={{ fontWeight: 700, color: "var(--bronze-soft)" }}>12&thinsp;%</span>
-            <span style={{ opacity: 0.85 }}>Operations &mdash; staff, facilitators, and the spaces we gather in.</span>
-          </li>
-          <li style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 12, alignItems: "baseline" }}>
-            <span style={{ fontWeight: 700, color: "var(--bronze-soft)" }}>6&thinsp;%</span>
-            <span style={{ opacity: 0.85 }}>Fundraising &mdash; processing fees and outreach to keep the work growing.</span>
-          </li>
-        </ul>
-        <p style={{ margin: "14px 0 0", fontSize: 12.5, lineHeight: 1.55, opacity: 0.6 }}>
-          The Black Girl Advocate is a 501(c)(3) nonprofit (EIN on request). Sustainers receive a quarterly impact briefing showing exactly which girls and programs your gift funded.
-        </p>
-      </div>
-
-      <div style={{ marginTop: 32 }}>
-        <Label dark>Amount</Label>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginTop: 8 }}>
-          {presets.map((p) =>
-          <button key={p} type="button" onClick={() => setAmount(p)} style={{
-            padding: "16px 0",
-            background: amount === p ? "var(--bronze-soft)" : "transparent",
-            color: amount === p ? "var(--chocolate-2)" : "var(--beige)",
-            border: amount === p ? "none" : "1px solid rgba(245,240,230,0.25)",
-            borderRadius: 12,
-            cursor: "pointer",
-            fontFamily: "inherit", fontSize: 18, fontWeight: 600
-          }}>${p}</button>
-          )}
-        </div>
-        <div style={{ position: "relative", marginTop: 8 }}>
-          <span style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", opacity: 0.5 }}>$</span>
-          <input type="number" value={amount} onChange={(e) => setAmount(+e.target.value)} style={{
-            width: "100%", padding: "16px 16px 16px 32px",
-            background: "rgba(245,240,230,0.05)", color: "var(--beige)",
-            border: "1px solid rgba(245,240,230,0.2)", borderRadius: 12,
-            fontFamily: "inherit", fontSize: 18, fontWeight: 600
-          }} />
-        </div>
-      </div>
-
-      <label style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 24, cursor: "pointer", fontSize: 14.5 }}>
-        <input type="checkbox" checked={recurring} onChange={(e) => setRecurring(e.target.checked)} style={{ width: 18, height: 18, accentColor: "var(--bronze-soft)" }} />
-        Make this a monthly gift, you'll join our Sustainer Circle
-      </label>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 32 }}>
-        <TextField dark label="Full name" placeholder="Jane Doe" />
-        <TextField dark label="Email" placeholder="jane@example.com" type="email" />
-      </div>
-
-      <button type="submit" className="btn btn-primary" style={{ marginTop: 32, width: "100%", padding: "18px 24px", fontSize: 16, justifyContent: "center" }}>
-        Give ${amount}{recurring ? "/mo" : ""} <Icon.Heart size={16} />
-      </button>
-      <p style={{ fontSize: 12, opacity: 0.55, marginTop: 16, textAlign: "center" }}>Secure processing via Stripe. 100% tax deductible.</p>
-    </form>);
 
 }
 
@@ -496,9 +413,7 @@ function SuccessMessage({ intent, onReset, dark }) {
       </div>
       <h2 className="display d-md" style={{ margin: 0 }}>Thank you.</h2>
       <p style={{ fontSize: 16, lineHeight: 1.6, marginTop: 16, opacity: 0.78, maxWidth: 440, margin: "16px auto 0" }}>
-        {intent === "donate" ?
-        "Your gift is processing. A receipt is on its way to your inbox. Welcome to the circle." :
-        "Your message is in. A real person will read it and respond within one business day."}
+        Your message is in. A real person will read it and respond within one business day.
       </p>
       <button className={dark ? "btn btn-outline-light" : "btn btn-outline-dark"} onClick={onReset} style={{ marginTop: 32 }}>Send another</button>
     </div>);

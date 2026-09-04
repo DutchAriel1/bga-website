@@ -32,7 +32,7 @@ function PrivacyPage({ onNavigate }) {
     {
       h: "Donations",
       b: [
-        "Online donations are processed by our third-party provider, Donorbox, and its payment processors. BGA does not store your full payment card details. Donorbox\u2019s handling of your information is governed by its own privacy policy.",
+        "Online donations are processed by our third-party provider, ColoradoGives, and its payment processors. BGA does not store your full payment card details. ColoradoGives\u2019s handling of your information is governed by its own privacy policy.",
         "We retain a record of your gift (amount, date, and contact details) for receipting, tax acknowledgment, and required nonprofit recordkeeping. Contributions are tax-deductible to the fullest extent allowed by law.",
       ],
     },

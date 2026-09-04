@@ -13,6 +13,7 @@ const BGA = {
     { id: "impact", label: "Impact" },
     { id: "programming", label: "Programming" },
     { id: "events", label: "Events" },
+    { id: "blockparty", label: "Block Party 2027" },
     { id: "ladiesfirst", label: "Ladies First" },
     { id: "shop", label: "Shop" },
     { id: "contact", label: "Contact" },

@@ -7,71 +7,91 @@
 
 const BGA_EVENTS = [
 {
-  id: "self-defense-sunday",
-  title: "Free Self-Defense Class + Sports Bra Donation",
-  program: "I Got Next",
-  date: [2026, 6, 5],
-  recurs: { day: 0, label: "Every Sunday" },
-  time: "12:00 PM",
-  endTime: "1:00 PM",
-  location: "3250 Quentin St",
-  city: "Aurora, CO 80011",
-  audience: "All BGA girls",
-  taughtBy: "Taught by USA Olympian Maya Nelson",
+  id: "rolex-watchmaking-info",
+  title: "Rolex University Information Session: Watchmaking",
+  program: "Senior Suite",
+  date: [2026, 8, 19],
+  time: "10:00 AM",
+  location: "Virtual info session",
+  city: "Online",
+  audience: "Seniors exploring college alternatives",
   rsvp: false,
-  registerUrl: "https://forms.gle/p3yVBY5vDDMKwrvZ8",
-  bra: true,
-  flyer: "assets/events/site-flyers/self-defense-sunday.jpg",
-  blurb: "Every Sunday our girls train with an Olympian. One hour of real self-defense technique, taught by USA Olympian Maya Nelson, followed by our sports bra drive. Entry is one new sports bra, because a girl cannot train in gear that does not fit her, and no girl should have to choose between comfort and showing up.",
+  registerUrl: "https://forms.gle/jBUGHPvC88JKddnX7",
+  registerLabel: "RSVP for the info session",
+  flyer: "assets/events/site-flyers/rolex-watchmaking-info-session.jpg",
+  blurb: "Looking for a college alternative? Learn about the Rolex Watchmaking Training pathway, a high-earning precision trade, straight from the source. Hosted by Senior Suite.",
   details: [
-  "Free every week. No experience, no membership, and no cost to families.",
-  "Wear clothes you can move in and closed toe athletic shoes.",
-  "Bring one new sports bra if you can. If you cannot, come anyway, we keep a stocked closet.",
-  "Registration is required once through our sign up form. After that, just show up every Sunday.",
-  "Parents are welcome to stay and watch."]
+  "September 19 at 10:00 AM.",
+  "Open to seniors and families exploring paths beyond a traditional four-year degree.",
+  "RSVP through the sign-up link to receive session details."]
 
 },
 {
-  id: "topgolf-9th",
-  title: "Top Golf: 9th Graders",
-  program: "I Got Next",
-  date: [2026, 7, 9],
-  time: "3:00 PM",
-  endTime: "5:00 PM",
-  location: "Topgolf Centennial",
-  city: "Centennial, CO",
-  audience: "9th grade girls",
+  id: "senior-suite-common-app",
+  title: "Senior Suite: Common App Essay Writing",
+  program: "Elite Eight",
+  date: [2026, 8, 26],
+  time: "10:00 AM",
+  endTime: "2:00 PM",
+  location: "Location to be announced",
+  city: "Colorado",
+  audience: "Class of 2027 seniors",
   rsvp: true,
-  flyer: "assets/events/site-flyers/topgolf-9th-graders.jpg",
-  blurb: "Our 9th grade class steps onto the tee. A relaxed afternoon of golf, food, and sisterhood built to open a sport most of our girls have never been invited into, and to introduce the freshman cohort to each other before the school year starts.",
+  flyer: "assets/events/site-flyers/senior-suite-common-app.jpg",
+  blurb: "A working session for our senior scholars to draft and workshop their Common App essay, with support on hand the whole time.",
   details: [
-  "Closed toe shoes are required to play. No sandals, no slides.",
-  "Clubs, bays, and instruction are provided. No experience needed.",
-  "Food and non-alcoholic drinks are included for every registered student.",
-  "Drop off and pick up at the main entrance. A BGA facilitator checks every girl in and out.",
-  "Space is limited and RSVP is required. Registration closes August 5."]
+  "Open to Class of 2027 seniors.",
+  "Bring a laptop or device to write on if you have one.",
+  "Location to be announced, check back or RSVP for updates."]
 
 },
 {
-  id: "educator-wellness-day",
-  title: "Black Educator Wellness Day",
-  program: "Black Women in Education",
-  date: [2026, 7, 16],
-  time: "8:00 AM",
-  endTime: "1:00 PM",
-  location: "Lincoln Hills",
-  city: "Pinecliffe, CO",
-  audience: "Black educators",
+  id: "sports-bra-giveaway",
+  title: "Sports Bra Give Away",
+  program: "I Got Next",
+  date: [2026, 8, 12],
+  time: "12:00 PM",
+  endTime: "3:00 PM",
+  location: "821 22nd St",
+  city: "Denver, CO 80205",
+  audience: "All BGA girls",
   rsvp: false,
-  soldOut: true,
-  flyer: "assets/events/site-flyers/black-educator-wellness-day.jpg",
-  blurb: "A restorative day in the mountains for thirty Black educators at Lincoln Hills, one of the only historically Black mountain resorts in the country. Horseback riding, yoga, sound bowls, archery, and a Black history hike. Built for the women who pour into our daughters all year and rarely get poured into.",
-  details: [
-  "Limited to thirty Black educators. This one filled before the public announcement.",
-  "Rides were available for the first fifteen guests who needed transportation.",
-  "Breakfast and lunch are included.",
-  "Want us to hold your spot next time, before we announce publicly? Email president@theblackgirladvocate.org and we will add you to the early list."]
-
+  flyer: "assets/events/site-flyers/sports-bra-giveaway.jpg",
+  blurb: "Play Bold. Lead Loud. A free sports bra give away for our girls, gear up in sizes XXS to 6X while supplies last, so every athlete has a bra that fits her.",
+  details: ["Sizes XXS through 6X available, while supplies last.", "To donate sports bras ahead of the event, contact heyy'all@theblackgirladvocate.org."]
+},
+{
+  id: "perimenopause-party",
+  title: "The Pause: Black Girl (Peri)Menopause Party",
+  program: "Black Women in Education",
+  date: [2026, 9, 16],
+  time: "7:00 PM",
+  location: "12444 Albrook Dr Ste 170",
+  city: "Denver, CO 80239",
+  audience: "",
+  rsvp: false,
+  ticketUrl: "https://www.zeffy.com/en-US/ticketing/the-pause-a-black-girl-perimenopause-party",
+  ticketNote: "Only 30 seats",
+  ticketPrice: "$35",
+  flyer: "assets/events/site-flyers/the-pause-menopause-party.jpg",
+  blurb: "A night made for the change: real talk with women who get it, guidance you can actually use on symptoms, hormones, and care, plus food, music, and sisterhood that makes the transition feel less lonely. Your $35 ticket funds the evening and the community it builds. Sponsored by The Colorado Health Foundation.",
+  details: ["Save the date, full location details are coming soon."]
+},
+{
+  id: "hbcu-tour-south-carolina",
+  title: "HBCU Tour: The Junior Preview Tour",
+  program: "HBCU Tour",
+  date: [2026, 9, 21],
+  endDate: [2026, 9, 24],
+  time: "Multi-day tour",
+  location: "South Carolina",
+  city: "Multi-city HBCU tour",
+  audience: "11th grade juniors",
+  rsvp: false,
+  learnMoreRoute: "hbcuinterest",
+  flyer: "assets/events/site-flyers/hbcu-tour-south-carolina.jpg",
+  blurb: "College exposure, culture, and possibility across South Carolina, featuring Gullah Geechee culture integration. Rooted in culture, focused on the future, for our junior cohort.",
+  details: ["Open to current juniors (11th grade) meeting the tour's GPA and residency criteria.", "Scan the QR code on the flyer or visit the HBCU Tour page to sign up."]
 }];
 
 
@@ -195,7 +215,15 @@ function EvMonth({ year, month, events, onPick }) {
       if (new Date(year, month, d).getDay() === e.recurs.day) push(d, e);
     }
   });
-  events.forEach((e) => { if (!e.recurs && e.date[0] === year && e.date[1] === month) push(e.date[2], e); });
+  events.forEach((e) => {
+    if (e.recurs || e.dateTBD) return;
+    if (e.endDate && e.date[0] === year && e.date[1] === month) {
+      const endD = e.endDate[1] === month ? e.endDate[2] : days;
+      for (let d = e.date[2]; d <= endD; d++) push(d, e);
+      return;
+    }
+    if (e.date[0] === year && e.date[1] === month) push(e.date[2], e);
+  });
   const total = Object.values(byDay).reduce((n, list) => n + list.length, 0);
   const cells = [];
   for (let i = 0; i < first; i++) cells.push(null);
@@ -260,7 +288,15 @@ function EvAgenda({ year, month, events, onPick }) {
     if (dates.length) rows.push({ ev: e, repeat: true, dates, sort: dates[0] });
   });
   events.forEach((e) => {
-    if (!e.recurs && e.date[0] === year && e.date[1] === month) rows.push({ ev: e, repeat: false, dates: [e.date[2]], sort: e.date[2] });
+    if (e.recurs || e.dateTBD) return;
+    if (e.endDate && e.date[0] === year && e.date[1] === month) {
+      const endD = e.endDate[1] === month ? e.endDate[2] : days;
+      const dates = [];
+      for (let d = e.date[2]; d <= endD; d++) dates.push(d);
+      rows.push({ ev: e, repeat: false, dates, sort: e.date[2], range: true });
+      return;
+    }
+    if (e.date[0] === year && e.date[1] === month) rows.push({ ev: e, repeat: false, dates: [e.date[2]], sort: e.date[2] });
   });
   rows.sort((a, b) => a.sort - b.sort);
   const count = rows.reduce((n, r) => n + r.dates.length, 0);
@@ -281,6 +317,8 @@ function EvAgenda({ year, month, events, onPick }) {
           const e = r.ev;
           const when = r.repeat ?
           `${e.recurs.label}, ${e.time}${e.endTime ? ` to ${e.endTime}` : ""}` :
+          r.range ?
+          `${mon.charAt(0)}${mon.slice(1).toLowerCase()} ${r.dates[0]}\u2013${r.dates[r.dates.length - 1]}` :
           `${dow(r.dates[0]).charAt(0)}${dow(r.dates[0]).slice(1).toLowerCase()} ${mon.charAt(0)}${mon.slice(1).toLowerCase()} ${r.dates[0]}, ${e.time}${e.endTime ? ` to ${e.endTime}` : ""}`;
           return (
             <button
@@ -296,9 +334,9 @@ function EvAgenda({ year, month, events, onPick }) {
                 flex: "0 0 78px", background: e.soldOut ? EV.taupe : EV.bronze, color: "#FFFFFF",
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 1, padding: "12px 6px"
               }}>
-                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", opacity: 0.85 }}>{r.repeat ? "EVERY" : dow(r.dates[0])}</span>
-                <span className="serif" style={{ fontSize: r.repeat ? 24 : 32, fontWeight: 600, lineHeight: 1.05 }}>
-                  {r.repeat ? dow(r.dates[0]).charAt(0) + dow(r.dates[0]).slice(1).toLowerCase() : r.dates[0]}
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", opacity: 0.85 }}>{r.repeat ? "EVERY" : r.range ? "DATES" : dow(r.dates[0])}</span>
+                <span className="serif" style={{ fontSize: r.repeat || r.range ? 24 : 32, fontWeight: 600, lineHeight: 1.05 }}>
+                  {r.repeat ? dow(r.dates[0]).charAt(0) + dow(r.dates[0]).slice(1).toLowerCase() : r.range ? `${r.dates[0]}\u2013${r.dates[r.dates.length - 1]}` : r.dates[0]}
                 </span>
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", opacity: 0.85 }}>{r.repeat ? `${r.dates.length} in ${mon}` : mon}</span>
               </div>
@@ -332,19 +370,20 @@ function EvAgenda({ year, month, events, onPick }) {
 
 /* ---------------- event card ---------------- */
 
-function EvCard({ ev, onRsvp, onBra }) {
+function EvCard({ ev, isOpen, onToggleRsvp, onBra, onNavigate }) {
   const d = new Date(ev.date[0], ev.date[1], ev.date[2]);
+  const dEnd = ev.endDate ? new Date(ev.endDate[0], ev.endDate[1], ev.endDate[2]) : null;
   return (
     <article id={`ev-${ev.id}`} style={{ background: "#FFFFFF", border: `1px solid ${EV.beigeWarm}`, borderRadius: 20, overflow: "hidden", display: "grid", gridTemplateColumns: ev.flyer ? "300px 1fr" : "1fr" }} className="ev-card">
       {ev.flyer &&
-      <div style={{ background: EV.tan, display: "grid", placeItems: "center", padding: 18 }}>
+      <div style={{ background: EV.tan, display: "grid", placeItems: "center", padding: 18, cursor: ev.rsvp ? "pointer" : "default" }} onClick={ev.rsvp ? onToggleRsvp : undefined}>
           <img src={ev.flyer} alt={`${ev.title} flyer`} style={{ width: "100%", height: "auto", display: "block", borderRadius: 10, boxShadow: "0 10px 28px rgba(42,29,27,0.22)" }} />
         </div>}
 
       <div style={{ padding: "30px 32px 32px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 14 }}>
           <span style={{ background: EV.chocolate, color: EV.beige, borderRadius: 999, padding: "6px 13px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>{ev.program}</span>
-          <span style={{ background: EV.lavenderSoft, color: EV.chocolate, borderRadius: 999, padding: "6px 13px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>{ev.audience}</span>
+          {ev.audience && <span style={{ background: EV.lavenderSoft, color: EV.chocolate, borderRadius: 999, padding: "6px 13px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>{ev.audience}</span>}
           {(ev.rsvp || ev.registerUrl) && <span style={{ border: `1.5px solid ${EV.bronze}`, color: EV.bronze, borderRadius: 999, padding: "5px 12px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Registration required</span>}
           {ev.recurs && <span style={{ background: EV.bronzeSoft, color: EV.chocolate2, borderRadius: 999, padding: "6px 13px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Weekly</span>}
           {ev.soldOut && <span style={{ background: EV.lavender, color: "#FFFFFF", borderRadius: 999, padding: "6px 14px", fontSize: 11, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" }}>Sold out</span>}
@@ -359,8 +398,12 @@ function EvCard({ ev, onRsvp, onBra }) {
           {[
           ev.recurs
           ? { l: "When", v: `${ev.recurs.label}, ${ev.time} to ${ev.endTime}` }
+          : ev.dateTBD
+          ? { l: "Date", v: "To be announced" }
+          : dEnd
+          ? { l: "Dates", v: `${d.toLocaleDateString("en-US", { month: "long", day: "numeric" })} \u2013 ${dEnd.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}` }
           : { l: "Date", v: d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) },
-          ...(ev.recurs ? [] : [{ l: "Time", v: ev.endTime ? `${ev.time} to ${ev.endTime}` : ev.time }]),
+          ...(ev.recurs || dEnd ? [] : [{ l: "Time", v: ev.endTime ? `${ev.time} to ${ev.endTime}` : ev.time }]),
           { l: "Where", v: `${ev.location}, ${ev.city}` }].
           map((row) =>
           <div key={row.l}>
@@ -390,17 +433,32 @@ function EvCard({ ev, onRsvp, onBra }) {
             </div>}
           {ev.registerUrl &&
           <a className="btn btn-primary" href={ev.registerUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-              Register for Sunday class <Icon.Arrow size={16} />
+              {ev.registerLabel || "Register for Sunday class"} <Icon.Arrow size={16} />
             </a>}
           {ev.rsvp &&
-          <button className="btn btn-primary" onClick={onRsvp}>
-              {ev.recurs ? "RSVP for Sunday class" : "RSVP for this event"} <Icon.Arrow size={16} />
+          <button className="btn btn-primary" onClick={onToggleRsvp}>
+              {isOpen ? "Hide sign up form" : ev.recurs ? "RSVP for Sunday class" : "RSVP for this event"} <Icon.Arrow size={16} />
             </button>}
           {ev.bra &&
           <button className="btn btn-outline-dark" onClick={onBra}>
               <Icon.Heart size={16} /> Donate a bra here
             </button>}
+          {ev.ticketUrl &&
+          <a className="btn btn-primary" href={ev.ticketUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              Purchase Tickets · {ev.ticketPrice} <Icon.Arrow size={16} />
+            </a>}
+          {ev.ticketNote &&
+          <span style={{ alignSelf: "center", fontSize: 13, fontWeight: 700, color: EV.bronze, letterSpacing: "0.04em" }}>{ev.ticketNote}</span>}
+          {ev.learnMoreRoute &&
+          <button className="btn btn-primary" onClick={() => onNavigate && onNavigate(ev.learnMoreRoute)}>
+              Learn more <Icon.Arrow size={16} />
+            </button>}
         </div>
+
+        {ev.rsvp && isOpen &&
+        <div style={{ marginTop: 28, paddingTop: 26, borderTop: `1px solid ${EV.beigeWarm}` }}>
+            <EvRsvpForm ev={ev} events={[ev]} onPickEvent={() => {}} />
+          </div>}
       </div>
     </article>);
 
@@ -433,7 +491,7 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
       const r = await window.bgaApi("/api/event-rsvp", { ...f, eventId: ev.id, eventTitle: ev.title, eventDate: ev.recurs ? `${ev.recurs.label}, ${ev.time} to ${ev.endTime}` : new Date(ev.date[0], ev.date[1], ev.date[2]).toDateString() });
       if (!r.ok) { setApiError("Please check your entries and try again."); setSubmitting(false); return; }
       setSubmitted(true);
-      window.scrollTo({ top: document.getElementById("ev-rsvp").offsetTop - 90, behavior: "smooth" });
+      window.scrollTo({ top: document.getElementById(`ev-rsvp-${ev.id}`).offsetTop - 90, behavior: "smooth" });
     } catch (err) {
       setApiError("Network error. Please try again, or email ariel@theblackgirladvocate.org.");
     } finally { setSubmitting(false); }
@@ -452,7 +510,7 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
 
   if (submitted) {
     return (
-      <div id="ev-rsvp" style={{ ...card, textAlign: "center", padding: "56px 32px" }}>
+      <div id={`ev-rsvp-${ev.id}`} style={{ ...card, textAlign: "center", padding: "56px 32px" }}>
         <div style={{ width: 62, height: 62, borderRadius: "50%", background: EV.bronze, color: "#FFFFFF", display: "grid", placeItems: "center", margin: "0 auto 20px" }}>
           <Icon.Check size={28} />
         </div>
@@ -468,7 +526,7 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
   }
 
   return (
-    <form id="ev-rsvp" onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+    <form id={`ev-rsvp-${ev.id}`} onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
       {events.length > 1 &&
       <div style={{ ...card, background: EV.chocolate, borderColor: "rgba(245,240,230,0.14)" }}>
         <div style={{ fontSize: 11, letterSpacing: "0.13em", textTransform: "uppercase", fontWeight: 700, color: EV.bronzeSoft, marginBottom: 10 }}>Which event are you registering for?</div>
@@ -597,7 +655,7 @@ function EvRsvpForm({ ev, events = [], onPickEvent }) {
 /* ---------------- FAQ ---------------- */
 
 const EV_FAQ = [
-{ q: "Who can attend BGA events?", a: "Our programming is built for Black girls in grades 6 through 12 across Colorado. Individual events are often limited to a specific grade band, and that is listed on every event card. Top Golf on August 9 is for rising 9th graders." },
+{ q: "Who can attend BGA events?", a: "Our programming is built for girls across Colorado. Individual events are often limited to a specific grade band, and that is listed on every event card." },
 { q: "Is there a cost?", a: "Any cost is stated on the event page before you RSVP. Most BGA events are underwritten by donors and sponsors so families pay nothing. If a fee ever stands between your girl and a program, email us and we will work it out privately." },
 { q: "Does a parent need to stay for the event?", a: "No. Our events are drop off unless the event card says otherwise. A BGA facilitator checks every student in and out by name, and we do not release a student to anyone who is not on her form. Parents are always welcome to stay." },
 { q: "Why do you ask for so much parent and guardian information?", a: "Two reasons. Safety, because we need a responsible adult reachable within minutes for every minor in our care. And funding, because youth serving grants require us to report who we serve. Your student's individual information is never sold or shared." },
@@ -641,19 +699,19 @@ function EvFaq() {
 /* ---------------- page ---------------- */
 
 function EventsPage({ onNavigate }) {
-  const rsvpEvents = BGA_EVENTS.filter((e) => e.rsvp);
-  const [activeId, setActiveId] = React.useState(rsvpEvents[0] ? rsvpEvents[0].id : null);
-  const rsvpEvent = rsvpEvents.find((e) => e.id === activeId) || rsvpEvents[0] || BGA_EVENTS[0];
+  const [openRsvpId, setOpenRsvpId] = React.useState(null);
   const sorted = [...BGA_EVENTS].sort((a, b) => new Date(a.date[0], a.date[1], a.date[2]) - new Date(b.date[0], b.date[1], b.date[2]));
 
   const jump = (id) => {
     const el = document.getElementById(`ev-${id}`);
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
   };
-  const toRsvp = (id) => {
-    if (id) setActiveId(id);
-    const el = document.getElementById("ev-rsvp-anchor");
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+  const toggleRsvp = (id) => {
+    setOpenRsvpId((cur) => {
+      const next = cur === id ? null : id;
+      if (next) setTimeout(() => { const el = document.getElementById(`ev-rsvp-${id}`); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" }); }, 60);
+      return next;
+    });
   };
 
   return (
@@ -676,17 +734,17 @@ function EventsPage({ onNavigate }) {
         <div className="container-wide">
           <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: "clamp(32px, 5vw, 72px)", alignItems: "end" }} className="ev-hero-grid">
             <div>
-              <EvEyebrow color={EV.bronzeSoft}>Summer 2026 Calendar</EvEyebrow>
+              <EvEyebrow color={EV.bronzeSoft}>Fall 2026 Calendar</EvEyebrow>
               <h1 className="serif" style={{ margin: "18px 0 0", fontSize: "clamp(44px, 6.4vw, 92px)", fontWeight: 600, lineHeight: 1.02, letterSpacing: "-0.02em" }}>
                 Events
               </h1>
               <p style={{ margin: "22px 0 0", maxWidth: 560, fontSize: "clamp(16px, 1.5vw, 19px)", lineHeight: 1.65, color: EV.beigeWarm, textWrap: "pretty" }}>
-                Every class, tour, game day, and circle we host, in one place. Self defense runs every Sunday. Pick a highlighted date to jump to the details, then RSVP. Spots are limited and they go fast.
+                Every class, tour, game day, and circle we host, in one place. Pick a highlighted date to jump to the details, then RSVP. Spots are limited and they go fast.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {[
-              { n: "Weekly", l: "self defense with an Olympian" },
+              { n: "Fall", l: "2026 programming season" },
               { n: "6\u201312", l: "grades we serve" },
               { n: "RSVP", l: "required for every event" }].
               map((s) =>
@@ -703,17 +761,17 @@ function EventsPage({ onNavigate }) {
       <section style={{ padding: "clamp(56px, 7vw, 88px) 0 clamp(40px, 5vw, 56px)" }}>
         <div className="container-wide">
           <EvEyebrow>The Calendar</EvEyebrow>
-          <h2 className="serif" style={{ margin: "14px 0 0", fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 600, lineHeight: 1.1 }}>July and August 2026</h2>
+          <h2 className="serif" style={{ margin: "14px 0 0", fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 600, lineHeight: 1.1 }}>September and October 2026</h2>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22, marginTop: 32 }} className="ev-cal-desk">
-            <EvMonth year={2026} month={6} events={BGA_EVENTS} onPick={jump} />
-            <EvMonth year={2026} month={7} events={BGA_EVENTS} onPick={jump} />
+            <EvMonth year={2026} month={8} events={BGA_EVENTS} onPick={jump} />
+            <EvMonth year={2026} month={9} events={BGA_EVENTS} onPick={jump} />
           </div>
           <div className="ev-cal-phone" style={{ marginTop: 26, gap: 30 }}>
-            <EvAgenda year={2026} month={6} events={BGA_EVENTS} onPick={jump} />
-            <EvAgenda year={2026} month={7} events={BGA_EVENTS} onPick={jump} />
+            <EvAgenda year={2026} month={8} events={BGA_EVENTS} onPick={jump} />
+            <EvAgenda year={2026} month={9} events={BGA_EVENTS} onPick={jump} />
           </div>
           <p style={{ margin: "22px 0 0", fontSize: 14, color: EV.taupe, lineHeight: 1.6 }}>
-            Every Sunday is our free self defense class in Aurora. One-off events sit alongside it. New dates are added here first, so check back or join the newsletter at the bottom of the page.
+            New dates are added here first, so check back or join the newsletter at the bottom of the page.
           </p>
         </div>
       </section>
@@ -725,23 +783,7 @@ function EventsPage({ onNavigate }) {
             <EvEyebrow>What's Coming Up</EvEyebrow>
             <h2 className="serif" style={{ margin: "14px 0 0", fontSize: "clamp(30px, 3.6vw, 46px)", fontWeight: 600, lineHeight: 1.1 }}>Next on the calendar</h2>
           </div>
-          {sorted.map((e) => <EvCard key={e.id} ev={e} onRsvp={() => toRsvp(e.id)} onBra={() => onNavigate("contact?intent=donate")} />)}
-        </div>
-      </section>
-
-      {/* RSVP */}
-      <section id="ev-rsvp-anchor" style={{ background: EV.beigeDeep, padding: "clamp(64px, 8vw, 100px) 0" }}>
-        <div className="container-wide" style={{ maxWidth: 900 }}>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <EvEyebrow>RSVP</EvEyebrow>
-            <h2 className="serif" style={{ margin: "14px 0 0", fontSize: "clamp(32px, 4.2vw, 54px)", fontWeight: 600, lineHeight: 1.08 }}>
-              Reserve her spot at {rsvpEvent.title}.
-            </h2>
-            <p style={{ margin: "18px auto 0", maxWidth: 620, fontSize: 16, lineHeight: 1.7, color: EV.taupe, textWrap: "pretty" }}>
-              About three minutes. Her registration, the parent or guardian we keep on file, the five data points our funders require, and a thirty second baseline we measure against at the end of the season.
-            </p>
-          </div>
-          <EvRsvpForm ev={rsvpEvent} events={rsvpEvents} onPickEvent={setActiveId} />
+          {sorted.map((e) => <EvCard key={e.id} ev={e} isOpen={openRsvpId === e.id} onToggleRsvp={() => toggleRsvp(e.id)} onBra={() => onNavigate("contact?intent=donate")} onNavigate={onNavigate} />)}
         </div>
       </section>
 

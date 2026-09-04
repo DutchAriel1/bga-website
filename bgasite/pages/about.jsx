@@ -37,16 +37,18 @@ function AboutPage({ onNavigate }) {
             {[
               { name: "Ariel Ruempolhamer", role: "Founder & Executive Director", ph: "ariel" },
               { name: "Hanifah Turner", role: "Co President", ph: "hanifah" },
-              { name: "Elia Martin", role: "Co President", ph: "elia" },
+              { name: "Elia Martin", role: "Co President", ph: "elia", link: "https://nextchaptertherapy.my.canva.site/next-chapter-therapy-collective" },
               { name: "Desirea Thames", role: "Mission Keeper", ph: "desirea" },
               { name: "Brittany Paris", role: "Community Director", ph: "brittany" },
-              { name: "Niani Scott", role: "Director of Communications", ph: "niani" },
+              { name: "Desteni Rivers", role: "Operations Director", ph: "desteni" },
+              { name: "Niani Scott", role: "Director of Communications", ph: "niani", link: "https://www.pridemediaco.com/" },
+              { name: "K'iara Maxey", role: "Creative Director", ph: "kiara" },
               { name: "Kristy Walker", role: "Secretary", ph: "kristy" },
               { name: "Macia Massey", role: "Treasurer", ph: "macia" },
-              { name: "Maya Nelson", role: "I Got Next : Girls in Sports Program Manager", ph: "maya" },
+              { name: "Maya Nelson", role: "I Got Next : Girls in Sports Program Manager", ph: "maya", link: "https://www.wrestlefullnelson.com/" },
             ].map((p, i) => (
               <div key={i}>
-                <div style={{ aspectRatio: "3/4", borderRadius: 16, backgroundImage: `url(assets/team/${p.ph}.jpg)`, backgroundSize: "cover", backgroundPosition: "center 20%", backgroundColor: "var(--beige-warm)" }} />
+                <div onClick={p.link ? () => window.open(p.link, "_blank", "noopener") : undefined} style={{ aspectRatio: "3/4", borderRadius: 16, backgroundImage: `url(assets/team/${p.ph}.jpg)`, backgroundSize: "cover", backgroundPosition: "center 20%", backgroundColor: "var(--beige-warm)", cursor: p.link ? "pointer" : "default" }} />
                 <h4 style={{ margin: "20px 0 4px", fontFamily: "Noto Serif", fontSize: 22, fontWeight: 500, letterSpacing: "-0.01em" }}>{p.name}</h4>
                 <p style={{ margin: 0, fontSize: 14, opacity: 0.7 }}>{p.role}</p>
               </div>

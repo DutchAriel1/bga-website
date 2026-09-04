@@ -116,7 +116,7 @@ function ImpactGivingLadder({ onNavigate }) {
   const tiers = [
     { amt: "$25", t: "A book in her hands", d: "Stocks the Black Girl Hair Project library with a title that reflects her crown.", c: "taupe" },
     { amt: "$50", t: "A Saturday of programming", d: "Funds one girl's seat at a full Saturday session, materials and breakfast included.", c: "bronze" },
-    { amt: "$250", t: "A month of mentorship", d: "Sustains a cohort's advocate-led mentoring for a full month.", c: "lavender", featured: true },
+    { amt: "$250", t: "A month of advocacy", d: "Sustains a cohort's advocate-led programming for a full month.", c: "lavender", featured: true },
     { amt: "$1,000", t: "A seat on the Elite Eight", d: "Sends a scholar on the Ivy League tour, travel, lodging, and admissions access.", c: "chocolate" },
   ];
   return (
@@ -124,10 +124,13 @@ function ImpactGivingLadder({ onNavigate }) {
       <div className="container-wide">
         <div className="eyebrow" style={{ color: "var(--bronze)" }}>Give with intention</div>
         <h2 className="display d-lg" style={{ margin: "20px 0 16px", maxWidth: 720 }}>Choose what your gift <span className="serif" style={{ fontStyle: "italic", fontWeight: 400 }}>becomes.</span></h2>
-        <p style={{ fontSize: 17, lineHeight: 1.6, opacity: 0.78, maxWidth: 600, margin: "0 0 48px" }}>
+        <p style={{ fontSize: 17, lineHeight: 1.6, opacity: 0.78, maxWidth: 600, margin: "0 0 32px" }}>
           Every level is tied to something real a girl receives. Give once, or make it monthly to
           multiply the impact.
         </p>
+        <div style={{ background: "var(--beige-deep)", border: "1px solid var(--line-dark)", borderRadius: 20, padding: "24px 28px", marginBottom: 40 }}>
+          <EOYProgress />
+        </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 22 }}>
           {tiers.map((t, i) => (
             <div key={i} style={{
@@ -149,6 +152,10 @@ function ImpactGivingLadder({ onNavigate }) {
         </div>
         <div style={{ marginTop: 28, textAlign: "center" }}>
           <button onClick={() => { onNavigate("home"); setTimeout(() => { const el = document.getElementById("donate-widget"); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: "smooth" }); }, 450); }} className="btn btn-dark">Give another amount <Icon.Arrow size={16} /></button>
+        </div>
+        <div style={{ marginTop: 20, fontSize: 13, lineHeight: 1.6, color: "var(--taupe)", textAlign: "center" }}>
+          <strong style={{ color: "var(--chocolate-2)" }}>Giving from a Donor-Advised Fund?</strong> Use our EIN, <strong>99-0725880</strong>, through your DAF sponsor's portal.
+          {" "}<strong style={{ color: "var(--chocolate-2)" }}>Giving stock?</strong> <a href="mailto:president@theblackgirladvocate.org?subject=Stock%20gift%20before%20year%20end" style={{ color: "var(--bronze)" }}>Contact us</a> before December 15.
         </div>
       </div>
     </section>

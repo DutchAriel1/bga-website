@@ -41,17 +41,17 @@ function ProgrammingPage({ onNavigate }) {
   },
   {
     id: "hair",
-    label: "Black Girl Hair Project",
+    label: "Black Hair Project",
     title: "The Black Hair Project",
     tag: "Identity & Wellness · All ages",
-    body: "Our hair is heritage, language, and labor of love. The Black Girl Project is a year round series of styling sessions, workshops, and conversations that affirm Black hair as crown, not coinitsmentary. We pair our girls with Black stylists, education on care, and the kind of mirror moments that root identity early.",
+    body: "Our hair is heritage, language, and a labor of love. The Black Hair Project is a year-round series of styling sessions, workshops, and conversations that affirm Black hair as a crown, for girls and boys alike. We pair every child with a licensed Black stylist, real education on care, and the kind of mirror moment that roots identity early and lasts a lifetime.",
     photo: "assets/photos/black-girl-hair-project.jpeg",
     photoCaption: "Black Girl Hair Project, sisterhood and crown care.",
     secondaryCta: "Donate Black Girl Hair Books",
     secondaryRoute: "donatebooks",
-    points: ["Annual styling sessions with licensed stylists", "Hair care education for girls and parents", "Discrimination & CROWN Act advocacy", "Self portrait and storytelling workshops", "Free product kits for participants"],
+    points: ["Annual styling sessions with licensed stylists, for girls and boys", "Hair care education for children and parents", "Discrimination & CROWN Act advocacy", "Self portrait and storytelling workshops", "Free product kits for participants"],
     ph: "ph-portrait-4",
-    expect: { cost: "Free · product kits included", schedule: "Quarterly ", apply: "RSVP ", transport: "Held at our Denver studio" }
+    expect: { cost: "Varies", schedule: "Quarterly ", apply: "RSVP ", transport: "Held at our Denver studio" }
   },
   {
     id: "sports",
@@ -77,6 +77,8 @@ function ProgrammingPage({ onNavigate }) {
     ph: "ph-portrait-2",
     photo: "assets/photos/black-women-in-education.png",
     photoCaption: "Black Women in Education advocates and the educators we celebrate.",
+    secondaryCta: "Nominate an Educator",
+    secondaryRoute: "orchids",
     expect: { cost: "Free ", schedule: "Year round · monthly cohort meet ups", apply: "Annual cohort, applications each December", transport: "Colorado" }
   },
   {
@@ -89,7 +91,7 @@ function ProgrammingPage({ onNavigate }) {
     ph: "ph-portrait-3",
     photo: "assets/photos/senior-suite.png",
     photoCaption: "Senior Suite scholars at our annual senior retreat, the room never closes.",
-    primaryCta: "Explore College Scholarships",
+    primaryCta: "Senior Year",
     expect: { cost: "Free · scholarship matching included", schedule: "Weekly · senior year, Aug–May", apply: "Open to rising seniors, June 1 deadline", transport: "Hybrid · in-person Saturdays + virtual office hours" }
   }];
 
@@ -98,7 +100,7 @@ function ProgrammingPage({ onNavigate }) {
     <>
       <PageHero
         eyebrow="Programming"
-        title={<>Six programs. One <span className="serif" style={{ fontStyle: "italic", fontWeight: 400 }}>womanist</span> sisterhood.</>}
+        title={<>Six programs. One sisterhood.</>}
         kicker="Year round programming built to move with her, from middle school through her first year of college and beyond. Most experiences are offered at no cost to families; select programs like our college tours are paid, with scholarships available. We Seed, Shape, Sharpen, and Soar at every stage of her journey." />
       
 
@@ -141,14 +143,14 @@ function ProgrammingPage({ onNavigate }) {
                 }
                 <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
                   {c.id !== "education" && c.id !== "hair" &&
-                  <button className="btn btn-dark" onClick={() => onNavigate(c.primaryRoute || (c.id === "senior" ? "scholarships" : c.id === "hbcu" ? "hbcuinterest" : "apply"))}>{c.primaryCta || "Enroll a Student"} <Icon.Arrow size={16} /></button>
+                  <button className="btn btn-dark" onClick={() => onNavigate(c.primaryRoute || (c.id === "senior" ? "icap" : c.id === "hbcu" ? "hbcuinterest" : "apply"))}>{c.primaryCta || "Enroll a Student"} <Icon.Arrow size={16} /></button>
                   }
                   {c.secondaryCta &&
                   <button className="btn btn-primary" onClick={() => onNavigate(c.secondaryRoute || "contact")}>{c.secondaryCta} <Icon.Arrow size={16} /></button>
                   }
-                  {c.id !== "hbcu" && c.id !== "education" &&
-                  <button className="btn" onClick={() => onNavigate(c.id === "arts" ? "tickets" : c.id === "eliteeight" ? "eliteeight" : "comingsoon")} style={{ background: "var(--lavender)", color: "var(--beige)" }}>
-                    <Icon.Calendar size={16} /> {c.id === "eliteeight" ? "The Tour Hub" : "Upcoming Events"}
+                  {c.id !== "hbcu" && c.id !== "education" && c.id !== "eliteeight" && c.id !== "arts" && c.id !== "hair" && c.id !== "sports" && c.id !== "senior" &&
+                  <button className="btn" onClick={() => onNavigate("comingsoon")} style={{ background: "var(--lavender)", color: "var(--beige)" }}>
+                    <Icon.Calendar size={16} /> Upcoming Events
                   </button>
                   }
                 </div>

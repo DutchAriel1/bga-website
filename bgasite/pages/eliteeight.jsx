@@ -226,7 +226,8 @@ function EEIntro() {
 
         <PhotoPlate
           ratio="4/5"
-          caption="Scholars on the steps, blazers, pleats, and quiet confidence."
+          src="assets/eliteeight/campus-portrait.jpg"
+          caption=""
           tint={EE.navy}
           label="Campus Portrait" />
         
@@ -411,7 +412,8 @@ function EEEligibility() {
       <div className="container-wide" style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: 72, alignItems: "center" }}>
         <PhotoPlate
           ratio="5/6"
-          caption="Quiet study, cable-knit, and a scarf at the harbor."
+          src="assets/eliteeight/the-scholar.jpg"
+          caption=""
           tint={EE.navyDeep}
           label="The Scholar"
           frameColor={EE.goldSoft} />
@@ -614,13 +616,14 @@ function EEFooterRule() {
 /* ====================================================================
    PHOTO PLATE, elegant framed placeholder
    ==================================================================== */
-function PhotoPlate({ ratio = "4/5", caption, label = "Imagery", tint = EE.navy, frameColor = EE.camel }) {
+function PhotoPlate({ ratio = "4/5", caption, label = "Imagery", tint = EE.navy, frameColor = EE.camel, src }) {
   return (
     <div>
       <div className="ee-photo" style={{
         aspectRatio: ratio,
-        background: `linear-gradient(135deg, ${tint}, ${EE.navyDeep})`
+        background: src ? `center/cover no-repeat url(${src})` : `linear-gradient(135deg, ${tint}, ${EE.navyDeep})`
       }}>
+        {!src &&
         <div style={{
           position: "absolute", inset: 0, display: "grid", placeItems: "center", textAlign: "center", padding: 24
         }}>
@@ -630,7 +633,7 @@ function PhotoPlate({ ratio = "4/5", caption, label = "Imagery", tint = EE.navy,
             </div>
             <div className="ee-eyebrow" style={{ color: frameColor, opacity: 0.85, fontSize: 11 }}>{label}</div>
           </div>
-        </div>
+        </div>}
       </div>
       {caption &&
       <div className="ee-serif" style={{ marginTop: 14, fontStyle: "italic", fontSize: 14.5, color: EE.camel, textAlign: "center" }}>

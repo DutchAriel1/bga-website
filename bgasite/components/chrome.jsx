@@ -1,6 +1,6 @@
 /* Navigation + footer used across all pages. */
 
-/* Send any Donate button to the Donorbox widget on the home page. */
+/* Send any Donate button to the ColoradoGives giving ladder on the home page. */
 function goDonate(onNavigate) {
   onNavigate("home");
   setTimeout(() => {
@@ -35,6 +35,7 @@ function Nav({ current, onNavigate, dark = false }) {
       { id: "hbcuinterest", label: "HBCU Tour" },
       { id: "educationhub", label: "Black Women in Education" }] },
     { id: "events", label: "Events" },
+    { id: "blockparty", label: "Block Party 2027" },
     { id: "shop", label: "Shop" },
     { id: "contact", label: "Contact" }];
 
@@ -327,3 +328,36 @@ window.Nav = Nav;
 window.Footer = Footer;
 window.PageHero = PageHero;
 window.Logo = Logo;
+
+/* EOY campaign config. RAISED is the fallback shown until the live ColoradoGives total loads. */
+window.EOY_CAMPAIGN = { GOAL: 20000, RAISED: 555, DEADLINE: "December 31, 2026" };
+
+/* Shared EOY progress bar, live-synced to the ColoradoGives page via /api/coloradogives-total. */
+function EOYProgress({ dark }) {
+  const { GOAL, DEADLINE } = window.EOY_CAMPAIGN;
+  const [raised, setRaised] = React.useState(window.EOY_CAMPAIGN.RAISED);
+  React.useEffect(() => {
+    let alive = true;
+    fetch("/api/coloradogives-total").then((r) => r.ok ? r.json() : null).then((j) => {
+      if (alive && j && typeof j.raised === "number") { setRaised(j.raised); window.EOY_CAMPAIGN.RAISED = j.raised; }
+    }).catch(() => {});
+    return () => { alive = false; };
+  }, []);
+  const pct = Math.min(100, Math.round((raised / GOAL) * 100));
+  const fg = dark ? "var(--beige)" : "var(--chocolate-2)";
+  const track = dark ? "rgba(245,240,230,0.14)" : "var(--beige-warm)";
+  const bar = dark ? "var(--bronze-soft)" : "var(--bronze)";
+  return (
+    <div style={{ color: fg }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 10, flexWrap: "wrap" }}>
+        <span style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.75 }}>Year-End Goal: ${GOAL.toLocaleString()} by {DEADLINE}</span>
+        <span className="display" style={{ fontSize: 20, fontWeight: 400 }}>${raised.toLocaleString()} raised</span>
+      </div>
+      <div style={{ height: 12, borderRadius: 999, background: track, overflow: "hidden" }}>
+        <div style={{ width: `${pct}%`, height: "100%", borderRadius: 999, background: bar, transition: "width 0.4s" }} />
+      </div>
+      <div style={{ fontSize: 12.5, opacity: 0.65, marginTop: 8 }}>{pct}% of the way there. Every gift before {DEADLINE} closes the gap.</div>
+    </div>
+  );
+}
+window.EOYProgress = EOYProgress;

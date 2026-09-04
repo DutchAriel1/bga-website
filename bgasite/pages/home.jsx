@@ -124,7 +124,7 @@ const SEARCH_INDEX = [
 { t: "Black Women in Education", r: "educationhub", g: "Programs", d: "A resource hub and educator advocacy training.", k: "educators teachers resources hub training professional development" },
 { t: "The Orchid Awards", r: "orchids", g: "Programs", d: "Nominate an honoree or sponsor the ceremony.", k: "orchid awards nominate nomination sponsor gala honoree ceremony" },
 { t: "Ladies First", r: "ladiesfirst", g: "Programs", d: "The stage production and how to get tickets.", k: "ladies first show theatre play production performance" },
-{ t: "Scholarships", r: "scholarships", g: "Students", d: "Scholarships we track for Colorado students.", k: "scholarship money financial aid fafsa awards college funding deadlines" },
+{ t: "Scholarships", r: "icap", g: "Students", d: "Scholarships we track for Colorado students.", k: "scholarship money financial aid fafsa awards college funding deadlines icap" },
 { t: "Apply to a Program", r: "apply", g: "Sign Up", d: "The general program application.", k: "apply application join enroll register student intake" },
 { t: "Request Tickets", r: "tickets", g: "Sign Up", d: "Ask for seats at an upcoming show.", k: "tickets seats show reserve request attend" },
 { t: "Donate Books", r: "donatebooks", g: "Give", d: "The Black Girl Hair Project book drive.", k: "books book drive donate hair project library reading titles" },
@@ -135,7 +135,7 @@ const SEARCH_INDEX = [
 { t: "Contact Us", r: "contact", g: "About", d: "Email, phone, partnerships, and volunteering.", k: "contact email phone call reach out volunteer partner sponsor question address" },
 { t: "Privacy Policy", r: "privacy", g: "About", d: "How we handle your information.", k: "privacy policy data terms information legal" }];
 
-const SEARCH_POPULAR = ["events", "programming", "igotnext", "eliteeight", "scholarships", "contact"];
+const SEARCH_POPULAR = ["events", "programming", "igotnext", "eliteeight", "icap", "contact"];
 
 function SiteSearch({ onNavigate }) {
   const [q, setQ] = React.useState("");
@@ -580,13 +580,9 @@ function DonorSection({ onNavigate }) {
     <section id="fund-the-year" className="section" style={{ background: "var(--beige-deep)" }}>
       <div className="container-wide">
         <div style={{ marginBottom: 28, maxWidth: 760 }}>
-          <div className="chip chip-chocolate" style={{ marginBottom: 18 }}>
+          <div className="chip chip-chocolate">
             <Icon.Heart size={12} /> For Funders
           </div>
-          <h2 className="display d-lg" style={{ margin: 0 }}>
-            Fund a girl's
-            <span className="serif" style={{ fontStyle: "italic", fontWeight: 300 }}> whole year.</span>
-          </h2>
         </div>
         <div style={{
           background: "var(--chocolate)",
@@ -601,16 +597,27 @@ function DonorSection({ onNavigate }) {
           overflow: "hidden"
         }}>
           <div style={{ position: "relative" }}>
+            <div style={{ marginBottom: 32 }}><EOYProgress dark /></div>
             <p style={{ fontSize: 18, lineHeight: 1.6, margin: 0, opacity: 0.85, maxWidth: 520 }}>
               Most of what we run is offered at no cost to families; select experiences like our college tours are paid, with scholarships available. Your gift puts a girl in The Elite Eight, on the HBCU tour, and in every Saturday room she chooses.
               Sustainers join the Sister Funders Circle and our quarterly impact briefings.
             </p>
+            <div style={{ display: "flex", gap: 28, marginTop: 24, flexWrap: "wrap" }}>
+              <div>
+                <div className="display" style={{ fontSize: 30, fontWeight: 400, color: "var(--bronze-soft)", lineHeight: 1 }}>82&cent;</div>
+                <div style={{ fontSize: 12.5, opacity: 0.7, marginTop: 4 }}>of every dollar reaches a girl</div>
+              </div>
+              <div>
+                <div className="display" style={{ fontSize: 30, fontWeight: 400, color: "var(--bronze-soft)", lineHeight: 1 }}>94%</div>
+                <div style={{ fontSize: 12.5, opacity: 0.7, marginTop: 4 }}>college graduation, multi-year scholars</div>
+              </div>
+            </div>
             <div style={{ marginTop: 36, display: "flex", gap: 12, flexWrap: "wrap" }}>
               <button className="btn btn-primary" onClick={() => {
                 const el = document.getElementById("donate-widget");
                 if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: "smooth" });
               }}>
-                Donate Now <Icon.Arrow size={16} />
+                Fund Her Year-End <Icon.Arrow size={16} />
               </button>
               <button className="btn btn-outline-light" onClick={() => onNavigate("contact")}>
                 Download Impact Report
@@ -618,25 +625,27 @@ function DonorSection({ onNavigate }) {
             </div>
           </div>
 
-          <div id="donate-widget" style={{ position: "relative", background: "var(--beige)", borderRadius: 20, padding: 12, overflow: "visible", minHeight: 560 }}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: '<dbox-widget campaign="blackgirlunityspacedonations" type="donation_form" enable-auto-scroll="true"></dbox-widget>'
-              }} />
-
-            {/* ColoradoGives, for donors claiming the state charitable tax credit */}
-            <div style={{ marginTop: 8, padding: "20px 16px 8px", borderTop: "1px solid var(--beige-warm)", textAlign: "center" }}>
-              <div style={{ fontSize: 13, color: "var(--taupe)", lineHeight: 1.55, marginBottom: 14, maxWidth: 360, marginLeft: "auto", marginRight: "auto" }}>
-                Colorado donor? Give through <strong style={{ color: "var(--chocolate)" }}>ColoradoGives</strong> to claim the state charitable tax credit.
-              </div>
-              <a
-                href="https://www.coloradogives.org/organization/Black-Girl-Advocate"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn"
-                style={{ background: "#058094", color: "#FFFFFF", width: "100%", justifyContent: "center", textDecoration: "none" }}>
-                Give through ColoradoGives <Icon.Arrow size={16} />
-              </a>
+          <div id="donate-widget" style={{ position: "relative", background: "var(--beige)", borderRadius: 20, padding: 24, overflow: "visible" }}>
+            <div style={{ fontSize: 13, color: "var(--taupe)", lineHeight: 1.55, marginBottom: 18 }}>
+              Every gift below routes through <strong style={{ color: "var(--chocolate)" }}>ColoradoGives</strong>, so Colorado donors can claim the state charitable tax credit.
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
+              <GiveTier amount="$50" desc="Books, transportation, and meals for one Saturday session." />
+              <GiveTier amount="$500" desc="Sponsors one girl on the HBCU tour, a life-changing journey." highlight />
+              <GiveTier amount="$2,500" desc="Full Elite Eight sponsorship, one cohort member, one transformative year." />
+            </div>
+            <a
+              href="https://www.coloradogives.org/organization/Black-Girl-Advocate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+              style={{ background: "#058094", color: "#FFFFFF", width: "100%", justifyContent: "center", textDecoration: "none" }}>
+              Give through ColoradoGives <Icon.Arrow size={16} />
+            </a>
+            <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid var(--beige-warm)", fontSize: 12.5, lineHeight: 1.6, color: "var(--taupe)" }}>
+              <strong style={{ color: "var(--chocolate)" }}>Giving from a Donor-Advised Fund?</strong> Search "The Black Girl Advocate" or use our EIN, <strong>99-0725880</strong>, through your DAF sponsor's portal.
+              <br />
+              <strong style={{ color: "var(--chocolate)" }}>Giving stock?</strong> <a href="mailto:president@theblackgirladvocate.org?subject=Stock%20gift%20before%20year%20end" style={{ color: "var(--bronze)" }}>Contact us</a> before December 15 to transfer appreciated securities.
             </div>
           </div>
         </div>
@@ -648,24 +657,18 @@ function DonorSection({ onNavigate }) {
 function GiveTier({ amount, desc, highlight }) {
   return (
     <div style={{
-      background: highlight ? "var(--bronze-soft)" : "rgba(245,240,230,0.06)",
-      color: highlight ? "var(--chocolate-2)" : "var(--beige)",
-      border: highlight ? "none" : "1px solid rgba(245,240,230,0.14)",
+      background: highlight ? "var(--bronze-soft)" : "var(--beige-deep)",
+      color: "var(--chocolate-2)",
+      border: highlight ? "none" : "1px solid var(--beige-warm)",
       borderRadius: 16,
-      padding: "22px 24px",
+      padding: "18px 20px",
       display: "grid",
-      gridTemplateColumns: "auto 1fr auto",
+      gridTemplateColumns: "auto 1fr",
       alignItems: "center",
-      gap: 20,
-      cursor: "pointer",
-      transition: "transform 0.2s"
-    }}
-    onMouseEnter={(e) => e.currentTarget.style.transform = "translateX(4px)"}
-    onMouseLeave={(e) => e.currentTarget.style.transform = "translateX(0)"}>
-      
-      <div className="display" style={{ fontSize: 36, fontWeight: 400, lineHeight: 1, letterSpacing: "-0.02em" }}>{amount}</div>
-      <div style={{ fontSize: 14, opacity: highlight ? 0.8 : 0.75, lineHeight: 1.5 }}>{desc}</div>
-      <Icon.Arrow size={18} />
+      gap: 16
+    }}>
+      <div className="display" style={{ fontSize: 28, fontWeight: 400, lineHeight: 1, letterSpacing: "-0.02em" }}>{amount}</div>
+      <div style={{ fontSize: 13.5, opacity: 0.8, lineHeight: 1.45 }}>{desc}</div>
     </div>);
 
 }

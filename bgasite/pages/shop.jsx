@@ -171,9 +171,9 @@ function ShopPage({ onNavigate }) {
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-start" }}>
-              <button className="btn btn-primary" style={{ width: "100%", justifyContent: "center", padding: "16px 24px" }} onClick={() => { onNavigate("home"); setTimeout(() => { const el = document.getElementById("donate-widget"); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: "smooth" }); }, 450); }}>
+              <a className="btn btn-primary" style={{ width: "100%", justifyContent: "center", padding: "16px 24px", textDecoration: "none" }} href="https://www.coloradogives.org/organization/Black-Girl-Advocate" target="_blank" rel="noopener noreferrer">
                 Donate Now <Icon.Heart size={16} />
-              </button>
+              </a>
               <button className="btn btn-outline-light" style={{ width: "100%", justifyContent: "center", padding: "16px 24px" }} onClick={() => onNavigate("programming")}>
                 Explore Programs
               </button>
