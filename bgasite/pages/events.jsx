@@ -33,8 +33,8 @@ const BGA_EVENTS = [
   date: [2026, 8, 26],
   time: "10:00 AM",
   endTime: "2:00 PM",
-  location: "Location to be announced",
-  city: "Colorado",
+  location: "12444 Albrook Dr Ste 170",
+  city: "Denver, CO 80239",
   audience: "Class of 2027 seniors",
   rsvp: true,
   flyer: "assets/events/site-flyers/senior-suite-common-app.jpg",
@@ -42,7 +42,7 @@ const BGA_EVENTS = [
   details: [
   "Open to Class of 2027 seniors.",
   "Bring a laptop or device to write on if you have one.",
-  "Location to be announced, check back or RSVP for updates."]
+  "12444 Albrook Dr Ste 170, Denver, CO 80239."]
 
 },
 {
@@ -66,8 +66,8 @@ const BGA_EVENTS = [
   program: "Black Women in Education",
   date: [2026, 9, 16],
   time: "7:00 PM",
-  location: "12444 Albrook Dr Ste 170",
-  city: "Denver, CO 80239",
+  location: "Location to be announced",
+  city: "",
   audience: "",
   rsvp: false,
   ticketUrl: "https://www.zeffy.com/en-US/ticketing/the-pause-a-black-girl-perimenopause-party",
